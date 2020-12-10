@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_ten">10dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_micro">5dp</dimen>
+    <dimen name="margin_two">5dp</dimen>
+
+    <dimen name="padding_very_large">100dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_normal">10dp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+
+    <dimen name="text_size_h1">24sp</dimen>
+    <dimen name="text_size_h2">20sp</dimen>
+    <dimen name="text_size_h3">18sp</dimen>
+    <dimen name="text_size_b1">16sp</dimen>
+    <dimen name="text_size_b2">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_micro">10sp</dimen>
+
+    <dimen name="spacing_large">10dp</dimen>
+    <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="spacing_micro">4dp</dimen>
+
+    <dimen name="image_dimens">100dp</dimen>
+
+    <dimen name="zero">0dp</dimen>
+
+    <!-- Global elevation -->
+    <dimen name="elevation">2dp</dimen>
+
+    <!-- Global image items -->
+    <dimen name="global_item_image_size">50dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="radius_large">15dp</dimen>
+    <dimen name="radius_normal">10dp</dimen>
+    <dimen name="radius_small">3dp</dimen>
+
+    <!-- Toolbars -->
+    <dimen name="toolbar_inset_start">0dp</dimen>
+
+
+    <!-- Login -->
+    <dimen name="login_logo_top_margin">65dp</dimen>
+    <dimen name="login_margin_top">58dp</dimen>
+    <dimen name="login_horizontal_margin">35dp</dimen>
+    <dimen name="login_enter_button_padding">15dp</dimen>
+    <dimen name="login_no_account_margin_top">45dp</dimen>
+
+    <!-- Register -->
+    <dimen name="register_logo_margin_top">65dp</dimen>
+    <dimen name="register_join_text_margin_top">32dp</dimen>
+    <dimen name="register_horizontal_margin">35dp</dimen>
+    <dimen name="register_username_margin_top">40dp</dimen>
+    <dimen name="register_fields_margin_top">14dp</dimen>
+    <dimen name="register_join_button_margin_top">32dp</dimen>
+    <dimen name="register_a_user_margin_bottom">32dp</dimen>
+
+    <!-- Article -->
+    <dimen name="article_toolbar_buttons_margin">10dp</dimen>
+    <dimen name="article_body_margin_top">12dp</dimen>
+    <dimen name="article_margin_top_normal">20dp</dimen>
+    <dimen name="article_margin_top_micro">5dp</dimen>
+
+    <!-- Home -->
+    <dimen name="home_tab_margin_top">5dp</dimen>
+    <dimen name="home_tab_indicator_height">0dp</dimen>
+    <dimen name="home_tab_max_width">0dp</dimen>
+    <dimen name="home_search_icon_padding">10dp</dimen>
+
+    <!-- Profile -->
+    <dimen name="profile_card_margin_top">20dp</dimen>
+    <dimen name="profile_followers_margin_start">30dp</dimen>
+
+    <!-- Tag -->
+    <dimen name="tag_horizontal_margin">24dp</dimen>
+    <dimen name="tag_chips_margin_top">20dp</dimen>
+
+    <!-- Action Bottom Sheet -->
+    <dimen name="action_twenty">20dp</dimen>
+    <dimen name="action_button_padding">18dp</dimen>
+
+    <!-- Comment row -->
+    <dimen name="comment_bottom_margin">12dp</dimen>
+    <dimen name="comment_text_margin_top">12dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="dialog_title_text_margin_start">20dp</dimen>
+    <dimen name="dialog_comment_text_margin">20dp</dimen>
+    <dimen name="dialog_comment_min_height">150dp</dimen>
+    <dimen name="dialog_comment_max_height">180dp</dimen>
+
+    <!-- Horizontal article -->
+    <dimen name="horizontal_article_layout_horizontal_margin">4dp</dimen>
+
+    <!-- Profile article row -->
+    <dimen name="profile_article_row_layout_margin_bottom">10dp</dimen>
+    <dimen name="profile_article_row_horizontal_margin">10dp</dimen>
+    <dimen name="profile_article_row_body_margin_top">12dp</dimen>
+    <dimen name="profile_article_row_icon_padding">12dp</dimen>
+
+    <!-- Vertical article -->
+    <dimen name="vertical_article_layout_margin_bottom">12dp</dimen>
+    <dimen name="vertical_article_title_margin_top">12dp</dimen>
+    <dimen name="register_enter_button_margin_start">24dp</dimen>
+    <dimen name="register_enter_button_margin_bottom">32dp</dimen>
+
+    <!-- Snackbar Frame -->
+    <dimen name="snackBar_frame">12dp</dimen>
+
+</resources>

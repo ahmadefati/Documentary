@@ -1,0 +1,11 @@
+hilt_aggregated_deps/com_androiddevs_base_data_viewModel_MainActivityViewModel_HiltModuleModuleDeps.java
+ hilt_aggregated_deps.com_androiddevs_base_data_viewModel_MainActivityViewModel_HiltModuleModuleDeps
+com/androiddevs/base/data/viewModel/MainActivityViewModel_AssistedFactory.java
+ com.androiddevs.base.data.viewModel.MainActivityViewModel_AssistedFactory
+com/androiddevs/base/data/viewModel/MainActivityViewModel_AssistedFactory_Factory.java
+ com.androiddevs.base.data.viewModel.MainActivityViewModel_AssistedFactory_Factory
+ com.androiddevs.base.data.viewModel.MainActivityViewModel_AssistedFactory_Factory$InstanceHolder
+com/androiddevs/base/data/viewModel/MainActivityViewModel_HiltModule.java
+ com.androiddevs.base.data.viewModel.MainActivityViewModel_HiltModule
+com/documentary/base/BuildConfig.java
+ com.documentary.base.BuildConfig

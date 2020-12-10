@@ -1,0 +1,101 @@
+import com.documentary.buildsrc.Libs
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+}
+
+kapt {
+    correctErrorTypes = true
+    useBuildCache = true
+}
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api Libs.Kotlin.stdlib
+
+    // Test
+    testImplementation Libs.junit
+    testImplementation Libs.robolectric
+    testImplementation Libs.AndroidX.Test.core
+    testImplementation Libs.AndroidX.Test.rules
+    testImplementation Libs.AndroidX.Test.espressoCore
+
+    // AndroidX
+    api Libs.AndroidX.appcompat
+    api Libs.AndroidX.coreKtx
+    api Libs.AndroidX.constraintlayout
+
+    // Material Design
+    api Libs.materialDesign
+
+    // Coroutines
+    api Libs.Coroutines.core
+    api Libs.Coroutines.android
+
+    // Lifecycle
+    api Libs.AndroidX.Lifecycle.viewmodel
+    api Libs.AndroidX.Lifecycle.extensions
+    api Libs.AndroidX.Lifecycle.livedata
+
+    // Fragment and extension functions
+    api Libs.AndroidX.Fragment.fragment
+    api Libs.AndroidX.Fragment.fragmentKtx
+
+    // Navigation
+    api Libs.AndroidX.Navigation.fragment
+    api Libs.AndroidX.Navigation.ui
+
+    // Glide
+    api Libs.Glide.glide
+    kapt Libs.Glide.compiler
+
+    // Dagger core
+    api Libs.Dagger.dagger
+    kapt Libs.Dagger.compiler
+
+    // Hilt
+    api Libs.Hilt.library
+    api Libs.AndroidX.Hilt.viewmodel
+    kapt Libs.Hilt.compiler
+    kapt Libs.AndroidX.Hilt.compiler
+
+    // Easy Permission
+    api Libs.easypermissions
+
+    // Timber
+    api Libs.timber
+
+    // Google Play
+    api Libs.GooglePlay.location
+    api Libs.GooglePlay.maps
+
+    // Room
+    api Libs.AndroidX.Room.runtime
+    api Libs.AndroidX.Room.ktx
+
+    // Retrofit & OkHttp
+    api Libs.OkHttp.okhttp
+    api Libs.OkHttp.loggingInterceptor
+    api Libs.Retrofit.retrofit
+    api Libs.Retrofit.gsonConverter
+
+    // circleimageview
+    api Libs.imageCustom.circleimageview
+
+}
+

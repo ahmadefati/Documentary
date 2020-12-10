@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // General ids
+    <id name="rootView"/>
+
+    // Navigation Component action ids
+    <id name="action_runFragment_to_trackingFragment"/>
+    <id name="action_runFragment_to_loginFragment"/>
+
+</resources>

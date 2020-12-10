@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RunningApp</string>
+
+    <string name="API_URL" translatable="false">https://corona.lmao.ninja/v2/</string>
+
+    <string-array name="filter_options">
+        <item>Date</item>
+        <item>Running Time</item>
+        <item>Distance</item>
+        <item>Average Speed</item>
+        <item>Calories Burned</item>
+    </string-array>
+
+    <string name="dialog_cancel_run_title">Cancel the Run</string>
+    <string name="dialog_cancel_run_desc">Are you sure, you want to cancel the current run?</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDlFiU3yqTwMMmXiCc-XMUtlqwGBxBCxro</string>
+    <string name="action_cancel_run">Cancel Run</string>
+    <string name="home">Home</string>
+    <string name="search">search</string>
+</resources>
