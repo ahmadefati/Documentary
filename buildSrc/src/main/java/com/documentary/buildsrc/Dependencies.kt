@@ -58,18 +58,24 @@ object Libs {
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.4"
         const val coreKtx = "androidx.core:core-ktx:1.3.2"
 
+        // Preferences DataStore
+        const val datastore = "androidx.datastore:datastore-preferences:1.0.0-alpha04"
+
         /**********************************************************************************************/
 
         object Test {
             private const val version = "1.3.0"
             const val core = "androidx.test:core:$version"
             const val rules = "androidx.test:rules:$version"
+
             object Ext {
                 private const val version = "1.1.2"
                 const val junit = "androidx.test.ext:junit-ktx:$version"
             }
+
             const val espressoCore = "androidx.test.espresso:espresso-core:3.3.0"
         }
+
         const val archCoreTesting = "androidx.arch.core:core-testing:2.1.0"
 
         /**********************************************************************************************/
@@ -151,9 +157,10 @@ object Libs {
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
     }
+
     /**********************************************************************************************/
 
-    object imageCustom{
+    object imageCustom {
         private const val version = "3.1.0"
         const val circleimageview = "de.hdodenhof:circleimageview:$version"
     }

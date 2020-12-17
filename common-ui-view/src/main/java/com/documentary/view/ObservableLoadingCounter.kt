@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.androiddevs.view
+package com.documentary.view
 
-import com.androiddevs.base.InvokeError
-import com.androiddevs.base.InvokeStarted
-import com.androiddevs.base.InvokeStatus
-import com.androiddevs.base.InvokeSuccess
+import com.documentary.base.InvokeError
+import com.documentary.base.InvokeStarted
+import com.documentary.base.InvokeStatus
+import com.documentary.base.InvokeSuccess
 import kotlinx.coroutines.flow.*
 import java.util.concurrent.atomic.AtomicInteger
 

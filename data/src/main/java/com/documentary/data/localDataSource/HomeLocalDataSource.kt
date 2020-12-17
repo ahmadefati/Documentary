@@ -10,8 +10,7 @@ import javax.inject.Inject
 
 class HomeLocalDataSource @Inject constructor(
     private val docDb: DocumentaryDatabase
-){
-
+) {
 
 
     suspend fun insertAllInfo(data: AllInfoEntity?) {
@@ -41,7 +40,7 @@ class HomeLocalDataSource @Inject constructor(
         docDb.countryInfoDao().insertCountryInfo(countyInfo)
     }
 
-    suspend fun getAllCountries() = docDb.countryDao().getAllCountries()
+    fun getAllCountries() = docDb.countryDao().getAllCountries()
 
     suspend fun getAllInfo() = docDb.allInfoDao().getInfo()
 

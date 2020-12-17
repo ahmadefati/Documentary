@@ -5,14 +5,14 @@
     <data>
 
         <variable
-            name="country"
+            name="countryData"
             type="com.documentary.data.entities.CountryEntity" />
 
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/horizontalArticleCard"
-        backgroundColor="@{country.todayCases}"
+        backgroundColor="@{countryData.todayCases}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/horizontal_article_layout_horizontal_margin"
@@ -29,21 +29,21 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/countryFlag"
-                imageSource="@{country.countryInfo.flag}"
+
                 android:layout_width="@dimen/global_item_image_size"
                 android:layout_height="@dimen/global_item_image_size"
                 android:layout_margin="@dimen/margin_normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
+            <!--            imageSource="@{country.countryInfo.flag}"-->
             <TextView
                 android:id="@+id/countryName"
                 style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_micro"
-                android:text="@{country.country}"
+                android:text="@{countryData.country}"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_b2"
                 android:textStyle="bold"

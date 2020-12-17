@@ -40,6 +40,9 @@ dependencies {
     api Libs.AndroidX.coreKtx
     api Libs.AndroidX.constraintlayout
 
+    // Preferences DataStore
+    api Libs.AndroidX.datastore
+
     // Material Design
     api Libs.materialDesign
 

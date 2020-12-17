@@ -1,7 +1,5 @@
-package com.androiddevs.data.repos
+package com.documentary.data.repos
 
-
-import com.documentary.base.data.entities.Success
 
 import com.documentary.data.remote.MainDataSource
 import dagger.Reusable
@@ -9,33 +7,33 @@ import javax.inject.Inject
 
 @Reusable
 class MainRepository @Inject constructor(
-    private val runDao: RunDAO,
+//    private val runDao: RunDAO,
     private val remote: MainDataSource
 ) {
-    suspend fun insertRun(run: Run) = runDao.insertRun(run)
+    /*  suspend fun insertRun(run: Run) = runDao.insertRun(run)
 
-    suspend fun deleteRun(run: Run) = runDao.deleteRun(run)
+      suspend fun deleteRun(run: Run) = runDao.deleteRun(run)
 
-    fun getAllRunsSortedByDate() = runDao.getAllRunsSortedByDate()
+      fun getAllRunsSortedByDate() = runDao.getAllRunsSortedByDate()
 
-    fun getAllRunsSortedByDistance() = runDao.getAllRunsSortedByDistance()
+      fun getAllRunsSortedByDistance() = runDao.getAllRunsSortedByDistance()
 
-    fun getAllRunsSortedByTimeInMillis() = runDao.getAllRunsSortedByTimeInMillis()
+      fun getAllRunsSortedByTimeInMillis() = runDao.getAllRunsSortedByTimeInMillis()
 
-    fun getAllRunsSortedByAvgSpeed() = runDao.getAllRunsSortedByAvgSpeed()
+      fun getAllRunsSortedByAvgSpeed() = runDao.getAllRunsSortedByAvgSpeed()
 
-    fun getAllRunsSortedByCaloriesBurned() = runDao.getAllRunsSortedByCaloriesBurned()
+      fun getAllRunsSortedByCaloriesBurned() = runDao.getAllRunsSortedByCaloriesBurned()
 
-    fun getTotalAvgSpeed() = runDao.getTotalAvgSpeed()
+      fun getTotalAvgSpeed() = runDao.getTotalAvgSpeed()
 
-    fun getTotalDistance() = runDao.getTotalDistance()
+      fun getTotalDistance() = runDao.getTotalDistance()
 
-    fun getTotalCaloriesBurned() = runDao.getTotalCaloriesBurned()
+      fun getTotalCaloriesBurned() = runDao.getTotalCaloriesBurned()
 
-    fun getTotalTimeInMillis() = runDao.getTotalTimeInMillis()
+      fun getTotalTimeInMillis() = runDao.getTotalTimeInMillis()
 
-    suspend fun getAllCountries() = when (val result = remote.getAllCountries()) {
-        is Success -> result.data
-        else -> emptyList()
-    }
+      suspend fun getAllCountries() = when (val result = remote.getAllCountries()) {
+          is Success -> result.data
+          else -> emptyList()
+      }*/
 }

@@ -1,4 +1,4 @@
-package com.androiddevs.view
+package com.documentary.view
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.androiddevs.view
+package com.documentary.view
 
-import com.androiddevs.base.extensions.delayFlow
+import com.documentary.base.extensions.delayFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay

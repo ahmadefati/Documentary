@@ -3,6 +3,7 @@
     package="com.documentary.app">
 
     <application
+        android:name=".DocumentaryApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Documentary">
         <activity
-            android:name="com.documentary.app.MainActivity"
+            android:name="com.documentary.app.main.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

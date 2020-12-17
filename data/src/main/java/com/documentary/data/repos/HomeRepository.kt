@@ -15,7 +15,7 @@ class HomeRepository @Inject constructor(
             localDs.insertCountries(result.data)
             true
         }
-        is ErrorResult ->{
+        is ErrorResult -> {
             throw result.throwable
 
         }
@@ -25,7 +25,7 @@ class HomeRepository @Inject constructor(
 
     suspend fun getAllInfoDb() = localDs.getAllInfo()
 
-    suspend fun getAllCountriesDb() = localDs.getAllCountries()
+    fun getAllCountriesDb() = localDs.getAllCountries()
 
     suspend fun getAllInfo() = when (val result = remote.getAllInfo()) {
         is Success -> {

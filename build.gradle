@@ -3,29 +3,29 @@ import com.documentary.buildsrc.Libs
 import com.documentary.buildsrc.Versions
 
 buildscript {
-ext {
-    kotlin_version = '1.4.10'
-}
-ext.buildConfig = [
-        'compileSdk': 30,
-        'minSdk'    : 23,
-        'targetSdk' : 30,
-]
+    ext {
+        kotlin_version = '1.4.10'
+    }
+    ext.buildConfig = [
+            'compileSdk': 30,
+            'minSdk'    : 23,
+            'targetSdk' : 30,
+    ]
 
-repositories {
-    google()
-    mavenCentral()
-    jcenter()
-}
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
 
-dependencies {
-    classpath Libs.androidGradlePlugin
-    classpath Libs.Kotlin.gradlePlugin
-    classpath Libs.Kotlin.extensions
-    classpath Libs.AndroidX.Navigation.safeArgs
-    classpath Libs.Hilt.gradlePlugin
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-}
+    dependencies {
+        classpath Libs.androidGradlePlugin
+        classpath Libs.Kotlin.gradlePlugin
+        classpath Libs.Kotlin.extensions
+        classpath Libs.AndroidX.Navigation.safeArgs
+        classpath Libs.Hilt.gradlePlugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 
 }
 
@@ -70,7 +70,7 @@ subprojects {
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {
             // Treat all Kotlin warnings as errors
-            allWarningsAsErrors = true
+            allWarningsAsErrors = false
 
             // Enable experimental coroutines APIs, including Flow
             freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"

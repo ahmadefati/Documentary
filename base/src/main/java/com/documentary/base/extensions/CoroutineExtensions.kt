@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.androiddevs.base.extensions
+package com.documentary.base.extensions
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
