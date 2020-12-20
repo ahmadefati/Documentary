@@ -2,7 +2,7 @@ package com.documentary.domain.other
 
 import com.documentary.base.utils.AppCoroutineDispatchers
 import com.documentary.data.entities.CountryEntity
-import com.documentary.data.repos.HomeRepository
+import com.documentary.data.repos.country.HomeRepository
 import com.documentary.domain.SubjectInteractor
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

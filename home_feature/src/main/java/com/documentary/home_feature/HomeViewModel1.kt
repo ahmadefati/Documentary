@@ -9,7 +9,6 @@ import com.documentary.domain.other.GetAllInfo
 import com.documentary.view.BaseViewModel
 import com.documentary.view.ObservableLoadingCounter
 import com.documentary.view.SnackbarManager
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -34,11 +33,8 @@ class HomeViewModel1 @ViewModelInject constructor(
                     loadingState.addLoader()
                 }.onEach {
                     loadingState.removeLoader()
-                }.collectLatest {
-//                    copy(countries = it)
-                    if (it) {
-                        getAllCountryLocalDS().collectAndSetState { copy(countryEntity = it) }
-                    }
+                }.collectAndSetState {
+                    copy(countryEntity = it)
                 }
         }
 

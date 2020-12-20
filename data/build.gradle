@@ -27,6 +27,7 @@ android {
 
 dependencies {
     api project(':base')
+    api Libs.store
 
     // Room
     kapt Libs.AndroidX.Room.compiler

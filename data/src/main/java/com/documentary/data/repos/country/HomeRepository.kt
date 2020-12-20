@@ -1,4 +1,4 @@
-package com.documentary.data.repos
+package com.documentary.data.repos.country
 
 import com.documentary.base.data.entities.ErrorResult
 import com.documentary.base.data.entities.Success
@@ -13,13 +13,13 @@ class HomeRepository @Inject constructor(
     suspend fun getAllCountries() = when (val result = remote.getAllCountries()) {
         is Success -> {
             localDs.insertCountries(result.data)
-            true
+            result
         }
         is ErrorResult -> {
-            throw result.throwable
+            result.throwable
 
         }
-        else -> false
+        else -> result
     }
 
 

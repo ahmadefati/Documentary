@@ -17,6 +17,7 @@ object Libs {
 
     const val junit = "junit:junit:4.13"
     const val robolectric = "org.robolectric:robolectric:4.4"
+    const val store = "com.dropbox.mobile.store:store4:4.0.0-beta01"
 
     /**********************************************************************************************/
 

@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.Flow
 interface CountryDao {
 
     @Transaction
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCountry(countryEntity: List<CountryEntity>)
 
     @Transaction
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCountry(countryEntity: CountryEntity)
 
     @Query("select * from country where country =:country")
@@ -20,5 +20,11 @@ interface CountryDao {
 
     @Query("select * from country")
     fun getAllCountries(): Flow<List<CountryEntity>>
+
+    @Query("Delete FROM country where id=:id")
+    suspend fun deleteCountry(id: Int)
+
+    @Query("Delete FROM country")
+    suspend fun deleteCountryAll()
 
 }
