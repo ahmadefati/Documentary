@@ -129,6 +129,7 @@ dependencies {
     implementation project(':common-ui-res')
     implementation project(':home_feature')
     implementation project(':login')
+    implementation project(':common-databinding')
 
     implementation Libs.Hilt.library
     kapt Libs.Hilt.compiler

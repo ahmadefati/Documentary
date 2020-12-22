@@ -21,7 +21,7 @@ class HomeViewModel1 @ViewModelInject constructor(
     private val getAllCountryLocalDS: GetAllCountryLocalDS
 ) : BaseViewModel<ObjectsViewState>(ObjectsViewState()) {
 
-
+    internal lateinit var countries: List<CountryEntity>
     private val loadingState = ObservableLoadingCounter()
 
     init {

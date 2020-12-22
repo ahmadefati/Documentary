@@ -1,4 +1,5 @@
 import com.documentary.buildsrc.Libs
+
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
@@ -34,6 +35,7 @@ android {
 dependencies {
     implementation project(':domain')
     implementation project(':common-ui-view')
+    implementation project(':common-databinding')
 
     // Hilt
     implementation Libs.Hilt.library

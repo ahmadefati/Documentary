@@ -12,6 +12,7 @@ class CountriesAdapter(
     private val onCountryItem: (countryEntity: CountryEntity) -> Unit
 ) : ListAdapter<CountryEntity, CountriesAdapter.CountryViewHolder>(object :
     DiffUtil.ItemCallback<CountryEntity>() {
+
     override fun areItemsTheSame(oldItem: CountryEntity, newItem: CountryEntity): Boolean {
         return oldItem.id == newItem.id
     }

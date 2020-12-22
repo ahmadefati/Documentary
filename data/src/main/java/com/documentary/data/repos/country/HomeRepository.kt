@@ -2,6 +2,7 @@ package com.documentary.data.repos.country
 
 import com.documentary.base.data.entities.ErrorResult
 import com.documentary.base.data.entities.Success
+import com.documentary.data.entities.CountryEntity
 import com.documentary.data.localDataSource.HomeLocalDataSource
 import com.documentary.data.remote.MainDataSource
 import javax.inject.Inject
@@ -10,16 +11,21 @@ class HomeRepository @Inject constructor(
     private val localDs: HomeLocalDataSource,
     private val remote: MainDataSource
 ) {
-    suspend fun getAllCountries() = when (val result = remote.getAllCountries()) {
-        is Success -> {
-            localDs.insertCountries(result.data)
-            result
-        }
-        is ErrorResult -> {
-            result.throwable
+    suspend fun getAllCountries(): List<CountryEntity> {
+        return when (val result = remote.getAllCountries()) {
+            is Success -> {
+                localDs.insertCountries(result.data)
+                result.data
+            }
+            is ErrorResult -> {
+                result.throwable
+                emptyList()
+
+            }
+            else -> emptyList()
 
         }
-        else -> result
+//        return remote.getAllCountries()
     }
 
 

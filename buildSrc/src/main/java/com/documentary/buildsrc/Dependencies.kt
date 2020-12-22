@@ -39,6 +39,14 @@ object Libs {
 
     /**********************************************************************************************/
 
+    object Insetter {
+        private const val version = "0.3.1"
+        const val dbx = "dev.chrisbanes:insetter-dbx:$version"
+        const val ktx = "dev.chrisbanes:insetter-ktx:$version"
+    }
+
+    /**********************************************************************************************/
+
     object Glide {
         private const val version = "4.11.0"
         const val glide = "com.github.bumptech.glide:glide:$version"
@@ -58,6 +66,8 @@ object Libs {
         const val appcompat = "androidx.appcompat:appcompat:1.2.0"
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.4"
         const val coreKtx = "androidx.core:core-ktx:1.3.2"
+        const val swiperefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
 
         // Preferences DataStore
         const val datastore = "androidx.datastore:datastore-preferences:1.0.0-alpha04"
