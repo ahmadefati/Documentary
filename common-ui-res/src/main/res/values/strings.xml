@@ -2,6 +2,7 @@
     <string name="app_name">RunningApp</string>
 
     <string name="API_URL" translatable="false">https://corona.lmao.ninja/v2/</string>
+    <string name="API_URL_REPO" translatable="false">https://api.github.com/</string>
 
     <string-array name="filter_options">
         <item>Date</item>
@@ -18,4 +19,10 @@
     <string name="action_cancel_run">Cancel Run</string>
     <string name="home">Home</string>
     <string name="search">search</string>
+    <string name="loading">Loading</string>
+    <string name="language">Language: %s</string>
+    <string name="search_hint">GitHub Repository</string>
+    <string name="no_results">No results 😓</string>
+    <string name="unknown">\?</string>
+    <string name="retry">Retry</string>
 </resources>

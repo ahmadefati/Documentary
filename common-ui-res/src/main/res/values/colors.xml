@@ -19,4 +19,9 @@
     <color name="whiteBackground">#ffffff</color>
     <color name="black">#363636</color>
     <color name="redButton">#ff5a5a</color>
+    <color name="titleColor">#1F75FE</color>
+    <color name="titleColorAlpha">#551F75FE</color>
+    <color name="greyAlpha">#55999999</color>
+    <color name="separatorBackground">#AAAAAA</color>
+    <color name="separatorText">#FFFFFF</color>
 </resources>

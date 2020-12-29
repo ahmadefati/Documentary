@@ -176,5 +176,11 @@ object Libs {
         const val circleimageview = "de.hdodenhof:circleimageview:$version"
     }
 
+    object Paging {
+        private const val version = "3.0.0-alpha09"
+        const val paging3 = "androidx.paging:paging-runtime-ktx:$version"
+
+    }
+
 
 }

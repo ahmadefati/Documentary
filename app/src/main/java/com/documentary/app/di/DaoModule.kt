@@ -24,4 +24,12 @@ object DaoModule {
     @Singleton
     fun provideAllInfoDAO(db: DocumentaryDatabase) = db.allInfoDao()
 
+    @Provides
+    @Singleton
+    fun provideRepoDAO(db: DocumentaryDatabase) = db.reposDao()
+
+    @Provides
+    @Singleton
+    fun provideRemoteKeysDAO(db: DocumentaryDatabase) = db.remoteKeysDao()
+
 }

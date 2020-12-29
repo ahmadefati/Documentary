@@ -100,5 +100,8 @@ dependencies {
     // circleimageview
     api Libs.imageCustom.circleimageview
 
+    //paging
+    api Libs.Paging.paging3
+
 }
 

@@ -1,5 +1,6 @@
 package com.documentary.app.di
 
+import com.documentary.data.services.RepoService
 import com.documentary.data.services.SampleService
 import dagger.Module
 import dagger.Provides
@@ -17,5 +18,16 @@ object ApiModule {
     @Singleton
     fun provideSampleService(retrofit: Retrofit): SampleService =
         retrofit.create(SampleService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRepoService(retrofit: Retrofit): RepoService =
+        retrofit.create(RepoService::class.java)
+
+    /* @Provides
+     @Singleton
+     private fun provideGithubRepository(context: Context): GithubRepository {
+         return GithubRepository(RepoService, DocumentaryDatabase.getInstance(context))
+     }*/
 
 }
