@@ -47,19 +47,6 @@ object DataModule {
             .build()
     }
 
-    /* @Provides
-     @OkHttpQualifier
-     fun secondRetrofit(
-         @ApplicationContext context: Context,
-         client: OkHttpClient,
-         converterFactory: GsonConverterFactory
-     ): Retrofit {
-         return Retrofit.Builder()
-             .baseUrl(context.getString(R.string.API_URL_REPO))
-             .client(client)
-             .addConverterFactory(converterFactory)
-             .build()
-     }*/
 
     @Provides
     @Singleton

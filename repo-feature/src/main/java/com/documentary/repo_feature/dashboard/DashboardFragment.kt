@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -83,12 +84,14 @@ class DashboardFragment : Fragment() {
                 ?: loadState.source.prepend as? LoadState.Error
                 ?: loadState.append as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
+                ?: loadState.mediator?.refresh as? LoadState.Error
             errorState?.let {
                 Toast.makeText(
                     activity,
                     "\uD83D\uDE28 Wooops ${it.error}",
                     Toast.LENGTH_LONG
                 ).show()
+                no_data.visibility = VISIBLE
             }
         }
 

@@ -24,10 +24,4 @@ object ApiModule {
     fun provideRepoService(retrofit: Retrofit): RepoService =
         retrofit.create(RepoService::class.java)
 
-    /* @Provides
-     @Singleton
-     private fun provideGithubRepository(context: Context): GithubRepository {
-         return GithubRepository(RepoService, DocumentaryDatabase.getInstance(context))
-     }*/
-
 }

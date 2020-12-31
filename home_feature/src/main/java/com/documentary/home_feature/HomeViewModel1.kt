@@ -9,8 +9,6 @@ import com.documentary.domain.other.GetAllInfo
 import com.documentary.view.BaseViewModel
 import com.documentary.view.ObservableLoadingCounter
 import com.documentary.view.SnackbarManager
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -27,7 +25,7 @@ class HomeViewModel1 @ViewModelInject constructor(
     init {
 
 
-        viewModelScope.launch {
+        /*viewModelScope.launch {
             getAllCountries()
                 .onStart {
                     loadingState.addLoader()
@@ -36,7 +34,7 @@ class HomeViewModel1 @ViewModelInject constructor(
                 }.collectAndSetState {
                     copy(countryEntity = it)
                 }
-        }
+        }*/
 
         viewModelScope.launch {
             loadingState.observable.collectAndSetState { copy(refreshing = it) }
