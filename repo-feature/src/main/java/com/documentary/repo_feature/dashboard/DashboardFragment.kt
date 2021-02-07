@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -19,9 +20,10 @@ import com.documentary.repo_feature.dashboard.adapter.ReposAdapter
 import com.documentary.repo_feature.dashboard.adapter.ReposLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
@@ -35,14 +37,36 @@ class DashboardFragment : Fragment() {
     private var searchJob: Job? = null
 
     private fun search(query: String) {
+        viewModel.testsearch(query)
         // Make sure we cancel the previous job before creating a new one
-        searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
-            viewModel.searchRepo(query).collectLatest {
-                adapter.submitData(it)
-            }
-        }
+        /*  val cancel = searchJob?.cancel()
+          GlobalScope.launch(Dispatchers.Main) {
+              viewModel.testsearch(query)
+          }
+      }
+          searchJob?.cancel()
+          searchJob = lifecycleScope.launch {
+              viewModel.searchRepo(query).collectLatest {
+                  adapter.submitData(it)
+              }
+          }*/
     }
+
+    private fun subscribe() {
+        viewModel.liveData.observe(viewLifecycleOwner, Observer {
+            /* searchJob?.cancel()
+             searchJob = lifecycleScope.launch {
+                 viewModel.searchRepo(query).collectLatest {
+                     adapter.submitData(it)
+                 }
+             }*/
+            GlobalScope.launch(Dispatchers.Main) {
+                adapter.submitData(pagingData = it.pagingDataUiModel)
+            }
+
+        })
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,9 +79,9 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 // add dividers between RecyclerView's row items
+        subscribe()
         val decoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         list.addItemDecoration(decoration)
-
         initAdapter()
         val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
         search(query)

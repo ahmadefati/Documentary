@@ -41,7 +41,15 @@ dependencies {
 
     // Hilt
     implementation Libs.Hilt.library
+    testImplementation 'junit:junit:4.12'
     kapt Libs.Hilt.compiler
     implementation Libs.AndroidX.Hilt.viewmodel
     kapt Libs.AndroidX.Hilt.compiler
+
+    testImplementation Libs.AndroidX.Test.MOCKK
+    testImplementation Libs.AndroidX.Test.ASSERTJ
+    testImplementation Libs.AndroidX.Test.RUNNER
+    testImplementation Libs.AndroidX.Test.COROUTINES_TEST
+    testImplementation Libs.AndroidX.Test.FRAGMENT_TEST
+    testImplementation Libs.AndroidX.Test.MOCK_WEB_SERVER
 }

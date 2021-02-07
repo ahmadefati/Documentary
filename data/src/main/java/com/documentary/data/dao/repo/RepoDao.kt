@@ -11,7 +11,7 @@ import com.documentary.data.entities.Repo
 interface RepoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(repos: List<Repo>)
+    fun insertAll(repos: List<Repo>)
 
     @Query(
         "SELECT * FROM repos WHERE " +
@@ -21,6 +21,6 @@ interface RepoDao {
     fun reposByName(queryString: String): PagingSource<Int, Repo>
 
     @Query("DELETE FROM repos")
-    suspend fun clearRepos()
+    fun clearRepos()
 
 }

@@ -4,25 +4,40 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import androidx.room.withTransaction
-import com.documentary.data.db.DocumentaryDatabase
+import com.documentary.data.dataSource.*
 import com.documentary.data.entities.RemoteKeys
 import com.documentary.data.entities.Repo
+import com.documentary.data.entities.RepoRequest
 import com.documentary.data.services.IN_QUALIFIER
-import com.documentary.data.services.RepoService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 import java.io.InvalidObjectException
+import javax.inject.Inject
 
 // GitHub page API is 1 based: https://developer.github.com/v3/#pagination
 private const val GITHUB_STARTING_PAGE_INDEX = 1
 
 @OptIn(ExperimentalPagingApi::class)
-class GithubRemoteMediator(
-    private val query: String,
-    private val service: RepoService,
-    private val repoDatabase: DocumentaryDatabase
+class GithubRemoteMediator @Inject constructor(
+//    private val query: String,
+//    private val service: RepoService,
+//    private val repoDatabase: DocumentaryDatabase,
+    private val localRepoDataSourceDeletable: LocalDataSourceDeletable,
+    private val localRepoDataSourceWritable: LocalRepoDataSourceWritable,
+    private val localRepoDataSourceReadable: LocalRepoDataSourceReadable,
+//    private val localRemoteKeyDataSourceDeletable: LocalRemoteKeyDataSourceDeletable,
+    private val localRemoteKeyDataSourceWritable: LocalRemoteKeyDataSourceWritable,
+    private val localRemoteKeyDataSourceReadable: LocalRemoteKeyDataSourceReadable,
+    private val remoteRepoDataSource: RemoteRepoDataSource
 ) : RemoteMediator<Int, Repo>() {
+    lateinit var query: String
+
+    operator fun invoke(parameters: Params): GithubRemoteMediator {
+        query = parameters.query
+        return this
+    }
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Repo>): MediatorResult {
 
@@ -59,30 +74,38 @@ class GithubRemoteMediator(
         val apiQuery = query + IN_QUALIFIER
 
         try {
-            val apiResponse = service.searchRepos(
-                "https://api.github.com/search/repositories?sort=stars",
-                apiQuery,
-                page,
-                state.config.pageSize
+            val apiResponse = remoteRepoDataSource.read(
+                RepoRequest(
+                    "https://api.github.com/search/repositories?sort=stars",
+                    apiQuery,
+                    page,
+                    state.config.pageSize
+                )
             )
-
-            val repos = apiResponse.items
-            val endOfPaginationReached = repos.isEmpty()
-            repoDatabase.withTransaction {
-                // clear all tables in the database
+            val body = apiResponse.body()
+            if (apiResponse.isSuccessful && body != null) {
+                val repos = body.items
+                val endOfPaginationReached = repos.isEmpty()
                 if (loadType == LoadType.REFRESH) {
-                    repoDatabase.remoteKeysDao().clearRemoteKeys()
-                    repoDatabase.reposDao().clearRepos()
+//                localRemoteKeyDataSourceDeletable.delete(Unit)
+                    withContext(Dispatchers.IO) {
+                        localRepoDataSourceDeletable.delete(Unit)
+                    }
+//                    repoDatabase.remoteKeysDao().clearRemoteKeys()
+//                    repoDatabase.reposDao().clearRepos()
                 }
                 val prevKey = if (page == GITHUB_STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = repos.map {
                     RemoteKeys(repoId = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
-                repoDatabase.remoteKeysDao().insertAll(keys)
-                repoDatabase.reposDao().insertAll(repos)
+                localRemoteKeyDataSourceWritable.write(keys)
+                localRepoDataSourceWritable.write(repos)
+                return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
+            } else {
+                return MediatorResult.Error(Throwable(apiResponse.message()))
             }
-            return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
+
         } catch (exception: IOException) {
             return MediatorResult.Error(exception)
         } catch (exception: HttpException) {
@@ -96,7 +119,8 @@ class GithubRemoteMediator(
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { repo ->
                 // Get the remote keys of the last item retrieved
-                repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
+                localRemoteKeyDataSourceReadable.read(LocalRemoteKeyDataSourceReadable.Params(repo.id))
+//                repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
             }
     }
 
@@ -106,7 +130,8 @@ class GithubRemoteMediator(
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { repo ->
                 // Get the remote keys of the first items retrieved
-                repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
+                localRemoteKeyDataSourceReadable.read(LocalRemoteKeyDataSourceReadable.Params(repo.id))
+//                repoDatabase.remoteKeysDao().remoteKeysRepoId(repo.id)
             }
     }
 
@@ -117,9 +142,12 @@ class GithubRemoteMediator(
         // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { repoId ->
-                repoDatabase.remoteKeysDao().remoteKeysRepoId(repoId)
+//                repoDatabase.remoteKeysDao().remoteKeysRepoId(repoId)
+                localRemoteKeyDataSourceReadable.read(LocalRemoteKeyDataSourceReadable.Params(repoId))
             }
         }
     }
+
+    data class Params(val query: String)
 
 }

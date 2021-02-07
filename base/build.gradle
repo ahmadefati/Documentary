@@ -35,6 +35,14 @@ dependencies {
     testImplementation Libs.AndroidX.Test.rules
     testImplementation Libs.AndroidX.Test.espressoCore
 
+    testImplementation Libs.AndroidX.Test.MOCKK
+    testImplementation Libs.AndroidX.Test.ASSERTJ
+    testImplementation Libs.AndroidX.Test.RUNNER
+    testImplementation Libs.AndroidX.Test.COROUTINES_TEST
+    testImplementation Libs.AndroidX.Test.FRAGMENT_TEST
+    testImplementation Libs.AndroidX.Test.MOCK_WEB_SERVER
+
+
     // AndroidX
     api Libs.AndroidX.appcompat
     api Libs.AndroidX.coreKtx

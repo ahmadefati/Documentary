@@ -85,9 +85,18 @@ object Libs {
             }
 
             const val espressoCore = "androidx.test.espresso:espresso-core:3.3.0"
+
+            const val archCoreTesting = "androidx.arch.core:core-testing:2.1.0"
+
+            const val MOCKK = "io.mockk:mockk:1.10.2"
+            const val ASSERTJ = "org.assertj:assertj-core:3.17.2"
+            const val RUNNER = "androidx.test:runner:${version}"
+
+            const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9"
+            const val FRAGMENT_TEST = "androidx.fragment:fragment-testing:1.2.5"
+            const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:4.9.0"
         }
 
-        const val archCoreTesting = "androidx.arch.core:core-testing:2.1.0"
 
         /**********************************************************************************************/
 

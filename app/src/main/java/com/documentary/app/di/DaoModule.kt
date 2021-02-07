@@ -32,4 +32,12 @@ object DaoModule {
     @Singleton
     fun provideRemoteKeysDAO(db: DocumentaryDatabase) = db.remoteKeysDao()
 
+
+//    ********************************************
+
+//    @Binds
+//    @ActivityRetainedScoped
+//    fun provideRemoteRepoDataSourceReadable(dataSource: RemoteRepoDataSource) : RemoteRepoDataSourceReadable
+
+
 }

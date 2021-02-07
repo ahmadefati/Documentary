@@ -1,6 +1,7 @@
 package com.documentary.data.services
 
 import com.documentary.data.responses.RepoSearchResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Url
@@ -14,5 +15,5 @@ interface RepoService {
         @Query("q") query: String,
         @Query("page") page: Int,
         @Query("per_page") itemsPerPage: Int
-    ): RepoSearchResponse
+    ): Response<RepoSearchResponse>
 }

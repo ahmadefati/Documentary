@@ -4,7 +4,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.documentary.base.PreferenceKeys.KEY_NAME
 import com.documentary.base.PreferenceKeys.KEY_TOKEN
-import com.documentary.domain.other.GetPreferences
+import com.documentary.domain.useCase.country.GetPreferences
 import com.documentary.view.BaseViewModel
 import kotlinx.coroutines.launch
 

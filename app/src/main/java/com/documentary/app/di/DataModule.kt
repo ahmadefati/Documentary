@@ -31,7 +31,7 @@ object DataModule {
         context,
         DocumentaryDatabase::class.java,
         Constants.DATABASE_NAME
-    ).build()
+    ).allowMainThreadQueries().build()
 
     @Provides
     @Singleton
@@ -46,7 +46,6 @@ object DataModule {
             .addConverterFactory(converterFactory)
             .build()
     }
-
 
 
     @Provides

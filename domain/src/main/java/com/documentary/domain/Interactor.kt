@@ -1,5 +1,7 @@
 package com.documentary.domain
 
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.documentary.base.InvokeError
 import com.documentary.base.InvokeStarted
 import com.documentary.base.InvokeStatus
@@ -40,6 +42,14 @@ abstract class ResultInteractor<in Params, ReturnType> {
     protected abstract suspend fun doWork(params: Params): ReturnType
 }
 
+abstract class PagingInteractor<P : PagingInteractor.Parameters<T>, T : Any> :
+    SubjectInteractorWithParams1<P, PagingData<T>>() {
+    interface Parameters<T : Any> {
+        val config: PagingConfig
+        val query: String
+    }
+}
+
 abstract class SuspendingWorkInteractorWithParams<Params : Any, ReturnType> :
     SubjectInteractorWithParams<Params, ReturnType>() {
     override fun createObservable(params: Params): Flow<ReturnType> = flow {
@@ -62,6 +72,17 @@ abstract class SubjectInteractorWithParams<Params : Any, ReturnType> {
         paramState.filterNotNull().flatMapLatest { createObservable(it) }
 }
 
+abstract class SubjectInteractorWithParams1<Params : Any, ReturnType> {
+
+    operator fun invoke(params: Params): Flow<ReturnType> {
+        return createObservable(params)
+    }
+
+    protected abstract fun createObservable(params: Params): Flow<ReturnType>
+
+
+}
+
 abstract class SubjectInteractor<ReturnType> {
     abstract operator fun invoke(): Flow<ReturnType>
 }
@@ -74,6 +95,8 @@ abstract class SuspendingWorkInteractor<ReturnType> : SubjectInteractor<ReturnTy
     abstract suspend fun doWork(): ReturnType
 }
 
+
 operator fun Interactor<Unit>.invoke() = invoke(Unit)
 operator fun <T> SubjectInteractorWithParams<Unit, T>.invoke() = invoke(Unit)
+//operator fun <T> SubjectInteractorWithParams1<Unit, T>.invoke() = invoke(Unit)
 

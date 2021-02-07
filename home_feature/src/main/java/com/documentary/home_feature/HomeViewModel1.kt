@@ -3,9 +3,9 @@ package com.documentary.home_feature
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.documentary.data.entities.CountryEntity
-import com.documentary.domain.other.GetAllCountries
-import com.documentary.domain.other.GetAllCountryLocalDS
-import com.documentary.domain.other.GetAllInfo
+import com.documentary.domain.useCase.country.GetAllCountries
+import com.documentary.domain.useCase.country.GetAllCountryLocalDS
+import com.documentary.domain.useCase.country.GetAllInfo
 import com.documentary.view.BaseViewModel
 import com.documentary.view.ObservableLoadingCounter
 import com.documentary.view.SnackbarManager
@@ -25,16 +25,16 @@ class HomeViewModel1 @ViewModelInject constructor(
     init {
 
 
-        /*viewModelScope.launch {
-            getAllCountries()
-                .onStart {
-                    loadingState.addLoader()
-                }.onEach {
-                    loadingState.removeLoader()
-                }.collectAndSetState {
-                    copy(countryEntity = it)
-                }
-        }*/
+        /* viewModelScope.launch {
+             getAllCountries()
+                 .onStart {
+                     loadingState.addLoader()
+                 }.onEach {
+                     loadingState.removeLoader()
+                 }.collectAndSetState {
+                     copy(countryEntity = it)
+                 }
+         }*/
 
         viewModelScope.launch {
             loadingState.observable.collectAndSetState { copy(refreshing = it) }

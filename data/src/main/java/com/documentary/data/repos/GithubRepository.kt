@@ -1,15 +1,12 @@
 package com.documentary.data.repos
 
-import android.util.Log
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import com.documentary.data.db.DocumentaryDatabase
+import androidx.paging.PagingSource
+import com.documentary.base.utils.AppCoroutineDispatchers
+import com.documentary.data.dataSource.LocalRepoDataSource
+import com.documentary.data.dataSource.LocalRepoDataSourceReadable
 import com.documentary.data.entities.Repo
 import com.documentary.data.remote.GithubRemoteMediator
-import com.documentary.data.services.RepoService
 import dagger.Reusable
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /**
@@ -17,33 +14,21 @@ import javax.inject.Inject
  */
 @Reusable
 class GithubRepository @Inject constructor(
-    private val service: RepoService,
-    private val database: DocumentaryDatabase
-) {
+    private val localRepoDataSource: LocalRepoDataSource,
+    private val githubRemoteMediator: GithubRemoteMediator,
+    private val dispatchers: AppCoroutineDispatchers
+) : IGithubRepository {
+    override fun getPagingSourceFactory(query: String): PagingSource<Int, Repo> {
+        val dbQuery = "%${query.replace(' ', '%')}%"
+        return localRepoDataSource.read(LocalRepoDataSourceReadable.Params(dbQuery))
+
+    }
+
+    override fun getGithubRemoteMediator(query: String): GithubRemoteMediator =
+        githubRemoteMediator(GithubRemoteMediator.Params(query))
 
     /**
      * Search repositories whose names match the query, exposed as a stream of data that will emit
      * every time we get more data from the network.
      */
-    fun getSearchResultStream(query: String): Flow<PagingData<Repo>> {
-        Log.d("GithubRepository", "New query: $query")
-
-        // appending '%' so we can allow other characters to be before and after the query string
-        val dbQuery = "%${query.replace(' ', '%')}%"
-        val pagingSourceFactory = { database.reposDao().reposByName(dbQuery) }
-
-        return Pager(
-            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
-            remoteMediator = GithubRemoteMediator(
-                query,
-                service,
-                database
-            ),
-            pagingSourceFactory = pagingSourceFactory
-        ).flow
-    }
-
-    companion object {
-        private const val NETWORK_PAGE_SIZE = 50
-    }
 }
