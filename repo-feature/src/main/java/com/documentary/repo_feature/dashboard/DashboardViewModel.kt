@@ -16,22 +16,16 @@ class DashboardViewModel @ViewModelInject constructor(
     private val loadingState = ObservableLoadingCounter()
     private val pagingConfig = PagingConfig(pageSize = 50, enablePlaceholders = false)
 
-    /* private val _text = MutableLiveData<String>().apply {
-             value = "This is dashboard Fragment"
-         }
-         val text: LiveData<String> = _text*/
+    val pagedList: Flow<PagingData<Repo>>
+        get() = pagingInteractor.observe()
+
     private var currentQueryValue: String? = null
 
+    /*init {
+        updateDataSource("")
+    }*/
 
     fun testsearch(query: String) {
-        /*viewModelScope.launch(Dispatchers.IO) {
-                searchRepo(query).collectLatest {
-
-                    adapter.submitData(it)
-                }
-        }.join()*/
-
-
         viewModelScope.launch {
             searchRepo(query)
                 .onStart {
@@ -56,8 +50,9 @@ class DashboardViewModel @ViewModelInject constructor(
             return lastResult
         }
         currentQueryValue = queryString
+        updateDataSource(queryString)
         val newResult: Flow<PagingData<UiModel>> =
-            pagingInteractor.invoke(GithubObserver.Params(pagingConfig, queryString))
+            pagedList
                 .map { pagingData -> pagingData.map { UiModel.RepoItem(it) } }
                 .map {
                     it.insertSeparators<UiModel.RepoItem, UiModel> { before, after ->
@@ -86,6 +81,10 @@ class DashboardViewModel @ViewModelInject constructor(
                 .cachedIn(viewModelScope)
         currentSearchResult = newResult
         return newResult
+    }
+
+    fun updateDataSource(query: String) {
+        pagingInteractor(GithubObserver.Parameters(pagingConfig, query))
     }
 
 }

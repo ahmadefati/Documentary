@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RunningApp</string>
+
 
     <string name="API_URL" translatable="false">https://corona.lmao.ninja/v2/</string>
     <string name="API_URL_REPO" translatable="false">https://api.github.com/</string>
@@ -25,4 +25,9 @@
     <string name="no_results">No results 😓</string>
     <string name="unknown">\?</string>
     <string name="retry">Retry</string>
+
+    <string name="app_name">Documentary</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

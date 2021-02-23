@@ -1,21 +1,18 @@
 package com.documentary.data.localDataSource
 
-import androidx.room.withTransaction
+import com.documentary.data.dao.AllInfoDao
 import com.documentary.data.db.DocumentaryDatabase
-import com.documentary.data.entities.AllInfoEntity
-import com.documentary.data.entities.CountryEntity
-import com.documentary.data.entities.CountryInfoEntity
-
 import javax.inject.Inject
 
 class HomeLocalDataSource @Inject constructor(
-    private val docDb: DocumentaryDatabase
+    private val docDb: DocumentaryDatabase,
+    private val allInfoDao: AllInfoDao
 ) {
 
-
+/*
     suspend fun insertAllInfo(data: AllInfoEntity?) {
         data?.let {
-            docDb.allInfoDao().insertInfo(it)
+            allInfoDao.insertInfo(it)
         }
     }
 
@@ -42,6 +39,6 @@ class HomeLocalDataSource @Inject constructor(
 
     fun getAllCountries() = docDb.countryDao().getAllCountries()
 
-    suspend fun getAllInfo() = docDb.allInfoDao().getInfo()
+    suspend fun getAllInfo() = allInfoDao.getInfo()*/
 
 }

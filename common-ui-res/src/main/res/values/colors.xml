@@ -24,4 +24,7 @@
     <color name="greyAlpha">#55999999</color>
     <color name="separatorBackground">#AAAAAA</color>
     <color name="separatorText">#FFFFFF</color>
+
+    <color name="colorGray">#9292af</color>
+    <color name="colorGrayLight">#eceff1</color>
 </resources>

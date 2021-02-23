@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.documentary.data.dao.AllInfoDao
 import com.documentary.data.dao.CountryDao
-import com.documentary.data.dao.CountryInfoDao
 import com.documentary.data.dao.repo.RemoteKeysDao
 import com.documentary.data.dao.repo.RepoDao
 import com.documentary.data.entities.*
@@ -18,7 +17,8 @@ import com.documentary.data.entities.*
 abstract class DocumentaryDatabase : RoomDatabase() {
     abstract fun allInfoDao(): AllInfoDao
     abstract fun countryDao(): CountryDao
-    abstract fun countryInfoDao(): CountryInfoDao
+
+    //    abstract fun countryInfoDao(): CountryInfoDao
     abstract fun reposDao(): RepoDao
     abstract fun remoteKeysDao(): RemoteKeysDao
 }

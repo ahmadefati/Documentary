@@ -5,7 +5,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -29,23 +28,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        /*  val appBarConfiguration = AppBarConfiguration(setOf(
-              R.id.navigation_home,
-              R.id.navigation_dashboard,
-              R.id.navigation_notifications
-          ))*/
-        /*setupActionBarWithNavController(navController, appBarConfiguration)*/
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications -> {
+                navController.graph.startDestination, R.id.navigation_dashboard, R.id.navigation_notifications -> {
                     navView.visibility = View.VISIBLE
                 }
-
                 else -> {
+                    navController.graph.startDestination
                     navView.visibility = View.GONE
                 }
             }
@@ -60,31 +51,19 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun subscribe() {
+    /*private fun subscribe() {
         viewModel.apply {
             liveData.observe(this@MainActivity, Observer { viewState ->
                 viewState.name?.let {
 
                 }
                 viewState.token?.let { token ->
-                    if (token.isEmpty() /*&& navController.currentDestination?.id != R.id.loginFragment*/) {
+                    if (token.isEmpty() *//*&& navController.currentDestination?.id != R.id.loginFragment*//*) {
 //                    navigateToSetupFragment()
                     }
                 }
             })
         }
-        /* viewModel.apply {
-             liveData.observe(this@MainActivity, { viewState ->
-                 viewState.name?.let {
-                     tvToolbarTitle.text = "Welcome back $it!"
-                 }
 
-                 viewState.token?.let { token ->
-                     if (token.isEmpty() && navController.currentDestination?.id != R.id.setupFragment) {
-                         navigateToSetupFragment()
-                     }
-                 }
-             })
-         }*/
-    }
+    }*/
 }

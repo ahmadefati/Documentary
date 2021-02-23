@@ -16,9 +16,9 @@ object DaoModule {
     @Singleton
     fun provideCountryDAO(db: DocumentaryDatabase) = db.countryDao()
 
-    @Provides
+/*    @Provides
     @Singleton
-    fun provideCountryInfoDAO(db: DocumentaryDatabase) = db.countryInfoDao()
+    fun provideCountryInfoDAO(db: DocumentaryDatabase) = db.countryInfoDao()*/
 
     @Provides
     @Singleton

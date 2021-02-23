@@ -16,10 +16,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
 
 @AndroidEntryPoint
-class HomeFragment1 : Fragment()/*(R.layout.fragment_home) */ {
+class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
 
 
-    private val homeViewModel: HomeViewModel1 by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
     private val countriesAdapter: CountriesAdapter by lazy {
         CountriesAdapter {
             homeViewModel.selectCountry(it)
@@ -50,10 +50,14 @@ class HomeFragment1 : Fragment()/*(R.layout.fragment_home) */ {
             if (it.countryEntity.isNotEmpty() && list == null) {
                 homeViewModel.countries = it.countryEntity.toList()
                 countriesAdapter.submitList(homeViewModel.countries)
+                if (it.allInfoEntity != null) {
+                    allCasesText.text = it.allInfoEntity.cases.toString()
+                    deathsText.text = it.allInfoEntity.deaths.toString()
+                    recovered.text = it.allInfoEntity.recovered.toString()
+                }
             } else if (list != null) {
                 countriesAdapter.submitList(list)
             }
-
 
         })
     }

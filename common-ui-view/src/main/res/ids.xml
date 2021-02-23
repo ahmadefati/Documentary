@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <id name="homePageFragment" />
+    <!--    <id name="personalInfoFragment" />-->
+    <!--    <id name="tv_toolbar_go_to_home" />-->
+    <!--    <id name="splashFragment" />-->
+    <!--    <id name="userHomePageFragment" />-->
+    <!--    <id name="userRegisterFragment" />-->
+    <!--    <id name="userLoginFragment" />-->
+    <!--    <id name="userForgetPasswordFragment" />-->
+    <!--    <id name="userForgetPasswordVerificationFragment" />-->
+    <!--    <id name="menuFragment" />-->
+</resources>

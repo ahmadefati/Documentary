@@ -39,27 +39,11 @@ class DashboardFragment : Fragment() {
     private fun search(query: String) {
         viewModel.testsearch(query)
         // Make sure we cancel the previous job before creating a new one
-        /*  val cancel = searchJob?.cancel()
-          GlobalScope.launch(Dispatchers.Main) {
-              viewModel.testsearch(query)
-          }
-      }
-          searchJob?.cancel()
-          searchJob = lifecycleScope.launch {
-              viewModel.searchRepo(query).collectLatest {
-                  adapter.submitData(it)
-              }
-          }*/
     }
 
     private fun subscribe() {
         viewModel.liveData.observe(viewLifecycleOwner, Observer {
-            /* searchJob?.cancel()
-             searchJob = lifecycleScope.launch {
-                 viewModel.searchRepo(query).collectLatest {
-                     adapter.submitData(it)
-                 }
-             }*/
+
             GlobalScope.launch(Dispatchers.Main) {
                 adapter.submitData(pagingData = it.pagingDataUiModel)
             }

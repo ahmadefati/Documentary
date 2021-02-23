@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_home">
-
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.documentary.home_feature.HomeFragment1"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_main" />
+    app:startDestination="@id/navigation_dashboard">
+    <include app:graph="@navigation/home_navigation" />
+    <!--    <fragment-->
+    <!--        android:id="@+id/navigation_home"-->
+    <!--        android:name="com.documentary.home_feature.HomeFragment"-->
+    <!--        android:label="@string/title_home"-->
+    <!--        tools:layout="@layout/fragment_main" />-->
 
     <fragment
         android:id="@+id/navigation_dashboard"

@@ -13,14 +13,14 @@ import javax.inject.Inject
 
 class GithubObserver @Inject constructor(
     private val githubRepository: GithubRepository
-) : PagingInteractor<GithubObserver.Params, Repo>() {
+) : PagingInteractor<GithubObserver.Parameters, Repo>() {
 
     /**
      * Search repositories whose names match the query, exposed as a stream of data that will emit
      * every time we get more data from the network.
      */
 
-    override fun createObservable(params: Params): Flow<PagingData<Repo>> {
+    override fun createObservable(params: Parameters): Flow<PagingData<Repo>> {
         Log.d("GithubRepository", "New query: ${params.query}")
 
         // appending '%' so we can allow other characters to be before and after the query string
@@ -28,7 +28,7 @@ class GithubObserver @Inject constructor(
         val pagingSourceFactory = { githubRepository.getPagingSourceFactory(dbQuery) }
 
         return Pager(
-            config = params.config,
+            config = params.pagingConfig,
             remoteMediator = githubRepository.getGithubRemoteMediator(params.query),
             pagingSourceFactory = pagingSourceFactory
         ).flow
@@ -36,11 +36,11 @@ class GithubObserver @Inject constructor(
 
     }
 
-    data class Params(
-        override val config: PagingConfig,
-        override val query: String
+    data class Parameters(
+        override val pagingConfig: PagingConfig,
+        val query: String
 
-    ) : Parameters<Repo>
+    ) : PagingInteractor.Parameters<Repo>
 
     companion object {
         private const val NETWORK_PAGE_SIZE = 50
