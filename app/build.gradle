@@ -131,6 +131,8 @@ dependencies {
     implementation project(':login')
     implementation project(':common-databinding')
     implementation project(':repo-feature')
+    implementation project(':notification_feature')
+
 
     implementation Libs.Hilt.library
     kapt Libs.Hilt.compiler

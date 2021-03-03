@@ -1,4 +1,4 @@
-package com.documentary.app.ui.notifications
+package com.documentary.notification_feature.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

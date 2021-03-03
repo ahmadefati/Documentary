@@ -11,6 +11,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.documentary.app.R
 import com.documentary.app.ui.event.Event
 import com.documentary.app.ui.event.EventObserver
+import com.documentary.base.Constants
+import com.documentary.base.utils.DeepLink
+import com.documentary.view.safeNavigate
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -27,12 +30,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
+        initView()
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                navController.graph.startDestination, R.id.navigation_dashboard, R.id.navigation_notifications -> {
+                navController.graph.startDestination, R.id.homePageFragment, R.id.repo_dashboard, R.id.notification_dashboard -> {
                     navView.visibility = View.VISIBLE
                 }
                 else -> {
@@ -51,19 +54,20 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    /*private fun subscribe() {
+    private fun initView() {
         viewModel.apply {
-            liveData.observe(this@MainActivity, Observer { viewState ->
-                viewState.name?.let {
-
-                }
-                viewState.token?.let { token ->
-                    if (token.isEmpty() *//*&& navController.currentDestination?.id != R.id.loginFragment*//*) {
-//                    navigateToSetupFragment()
-                    }
-                }
-            })
+            // When user logs out then navigate to home page. Then condition means that
+            // we're NOT inside of Home page && Splash screen.
+            safeNavigate(
+                navController,
+                DeepLink.Builder()
+                    .module(Constants.MODULE_UI_HOME)
+                    .fragment(Constants.HOME_PAGE_FRAGMENT)
+                    .build(),
+                R.id.homePageFragment
+            )
         }
 
-    }*/
+    }
+
 }

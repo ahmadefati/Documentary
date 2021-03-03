@@ -337,6 +337,8 @@ int attr destination 0x0
 int attr dialogCornerRadius 0x0
 int attr dialogPreferredPadding 0x0
 int attr dialogTheme 0x0
+int attr displayDescription 0x0
+int attr displayMonthNames 0x0
 int attr displayOptions 0x0
 int attr divider 0x0
 int attr dividerHorizontal 0x0
@@ -597,6 +599,22 @@ int attr listPreferredItemPaddingStart 0x0
 int attr liteMode 0x0
 int attr logo 0x0
 int attr logoDescription 0x0
+int attr lottie_autoPlay 0x0
+int attr lottie_cacheComposition 0x0
+int attr lottie_colorFilter 0x0
+int attr lottie_enableMergePathsForKitKatAndAbove 0x0
+int attr lottie_fallbackRes 0x0
+int attr lottie_fileName 0x0
+int attr lottie_imageAssetsFolder 0x0
+int attr lottie_loop 0x0
+int attr lottie_progress 0x0
+int attr lottie_rawRes 0x0
+int attr lottie_renderMode 0x0
+int attr lottie_repeatCount 0x0
+int attr lottie_repeatMode 0x0
+int attr lottie_scale 0x0
+int attr lottie_speed 0x0
+int attr lottie_url 0x0
 int attr mapType 0x0
 int attr materialAlertDialogBodyTextStyle 0x0
 int attr materialAlertDialogTheme 0x0
@@ -626,12 +644,14 @@ int attr maxHeight 0x0
 int attr maxImageSize 0x0
 int attr maxVelocity 0x0
 int attr maxWidth 0x0
+int attr maxYear 0x0
 int attr measureWithLargestChild 0x0
 int attr menu 0x0
 int attr mimeType 0x0
 int attr minHeight 0x0
 int attr minTouchTargetSize 0x0
 int attr minWidth 0x0
+int attr minYear 0x0
 int attr mock_diagonalsColor 0x0
 int attr mock_label 0x0
 int attr mock_labelBackgroundColor 0x0
@@ -725,6 +745,9 @@ int attr searchViewStyle 0x0
 int attr seekBarStyle 0x0
 int attr selectableItemBackground 0x0
 int attr selectableItemBackgroundBorderless 0x0
+int attr selectedDay 0x0
+int attr selectedMonth 0x0
+int attr selectedYear 0x0
 int attr shapeAppearance 0x0
 int attr shapeAppearanceLargeComponent 0x0
 int attr shapeAppearanceMediumComponent 0x0
@@ -912,6 +935,7 @@ int attr windowFixedWidthMinor 0x0
 int attr windowMinWidthMajor 0x0
 int attr windowMinWidthMinor 0x0
 int attr windowNoTitle 0x0
+int attr yearRange 0x0
 int attr yearSelectedStyle 0x0
 int attr yearStyle 0x0
 int attr yearTodayStyle 0x0
@@ -919,6 +943,7 @@ int attr zOrderOnTop 0x0
 int bool abc_action_bar_embed_tabs 0x0
 int bool abc_allow_stacked_button_bar 0x0
 int bool abc_config_actionMenuItemAllCaps 0x0
+int bool abc_config_showMenuShortcutsWhenKeyboardPresent 0x0
 int bool mtrl_btn_textappearance_all_caps 0x0
 int color abc_background_cache_hint_selector_material_dark 0x0
 int color abc_background_cache_hint_selector_material_light 0x0
@@ -1024,6 +1049,7 @@ int color dim_foreground_disabled_material_dark 0x0
 int color dim_foreground_disabled_material_light 0x0
 int color dim_foreground_material_dark 0x0
 int color dim_foreground_material_light 0x0
+int color error_color_material 0x0
 int color error_color_material_dark 0x0
 int color error_color_material_light 0x0
 int color foreground_material_dark 0x0
@@ -1139,6 +1165,7 @@ int dimen abc_action_bar_elevation_material 0x0
 int dimen abc_action_bar_icon_vertical_padding_material 0x0
 int dimen abc_action_bar_overflow_padding_end_material 0x0
 int dimen abc_action_bar_overflow_padding_start_material 0x0
+int dimen abc_action_bar_progress_bar_size 0x0
 int dimen abc_action_bar_stacked_max_height 0x0
 int dimen abc_action_bar_stacked_tab_max_width 0x0
 int dimen abc_action_bar_subtitle_bottom_margin_material 0x0
@@ -1619,6 +1646,7 @@ int drawable notify_panel_notification_icon_bg 0x0
 int drawable test_custom_background 0x0
 int drawable tooltip_frame_dark 0x0
 int drawable tooltip_frame_light 0x0
+int drawable touchable_background 0x0
 int id BOTTOM_END 0x0
 int id BOTTOM_START 0x0
 int id NO_DEBUG 0x0
@@ -1693,6 +1721,7 @@ int id auto 0x0
 int id autoComplete 0x0
 int id autoCompleteToEnd 0x0
 int id autoCompleteToStart 0x0
+int id automatic 0x0
 int id baseline 0x0
 int id blocking 0x0
 int id bottom 0x0
@@ -1717,12 +1746,16 @@ int id custom 0x0
 int id customPanel 0x0
 int id cut 0x0
 int id dark 0x0
+int id datePicker 0x0
+int id dateText 0x0
 int id date_picker_actions 0x0
+int id dayNumberPicker 0x0
 int id decelerate 0x0
 int id decelerateAndComplete 0x0
 int id decor_content_parent 0x0
 int id default_activity_button 0x0
 int id deltaRelative 0x0
+int id descriptionTextView 0x0
 int id design_bottom_sheet 0x0
 int id design_menu_item_action_area 0x0
 int id design_menu_item_action_area_stub 0x0
@@ -1756,6 +1789,7 @@ int id ghost_view_holder 0x0
 int id glide_custom_view_target_tag 0x0
 int id gone 0x0
 int id group_divider 0x0
+int id hardware 0x0
 int id home 0x0
 int id honorRequest 0x0
 int id hybrid 0x0
@@ -1781,10 +1815,12 @@ int id line3 0x0
 int id linear 0x0
 int id listMode 0x0
 int id list_item 0x0
+int id lottie_layer_name 0x0
 int id masked 0x0
 int id message 0x0
 int id middle 0x0
 int id mini 0x0
+int id monthNumberPicker 0x0
 int id month_grid 0x0
 int id month_navigation_bar 0x0
 int id month_navigation_fragment_toggle 0x0
@@ -1816,6 +1852,7 @@ int id multiply 0x0
 int id nav_controller_view_tag 0x0
 int id nav_host_fragment_container 0x0
 int id navigation_header_container 0x0
+int id negative_button 0x0
 int id none 0x0
 int id normal 0x0
 int id notification_background 0x0
@@ -1836,11 +1873,14 @@ int id pathRelative 0x0
 int id percent 0x0
 int id pin 0x0
 int id position 0x0
+int id positive_button 0x0
 int id postLayout 0x0
 int id progress_circular 0x0
 int id progress_horizontal 0x0
 int id radio 0x0
 int id rectangles 0x0
+int id restart 0x0
+int id reverse 0x0
 int id reverseSawtooth 0x0
 int id right 0x0
 int id right_icon 0x0
@@ -1876,6 +1916,7 @@ int id slide 0x0
 int id smallLabel 0x0
 int id snackbar_action 0x0
 int id snackbar_text 0x0
+int id software 0x0
 int id spacer 0x0
 int id special_effects_controller_view_tag 0x0
 int id spline 0x0
@@ -1922,6 +1963,7 @@ int id time 0x0
 int id title 0x0
 int id titleDividerNoCustom 0x0
 int id title_template 0x0
+int id today_button 0x0
 int id top 0x0
 int id topPanel 0x0
 int id touch_outside 0x0
@@ -1944,6 +1986,7 @@ int id visible_removing_fragment_view_tag 0x0
 int id wide 0x0
 int id wrap 0x0
 int id wrap_content 0x0
+int id yearNumberPicker 0x0
 int integer abc_config_activityDefaultDur 0x0
 int integer abc_config_activityShortDur 0x0
 int integer app_bar_elevation_anim_duration 0x0
@@ -2023,6 +2066,7 @@ int layout design_navigation_menu_item 0x0
 int layout design_text_input_end_icon 0x0
 int layout design_text_input_password_icon 0x0
 int layout design_text_input_start_icon 0x0
+int layout dialog_picker 0x0
 int layout mtrl_alert_dialog 0x0
 int layout mtrl_alert_dialog_actions 0x0
 int layout mtrl_alert_dialog_title 0x0
@@ -2060,6 +2104,7 @@ int layout notification_template_part_time 0x0
 int layout select_dialog_item_material 0x0
 int layout select_dialog_multichoice_material 0x0
 int layout select_dialog_singlechoice_material 0x0
+int layout sl_persian_date_picker 0x0
 int layout support_simple_spinner_dropdown_item 0x0
 int layout test_action_chip 0x0
 int layout test_design_checkbox 0x0
@@ -2113,6 +2158,7 @@ int string abc_searchview_description_voice 0x0
 int string abc_shareactionprovider_share_with 0x0
 int string abc_shareactionprovider_share_with_application 0x0
 int string abc_toolbar_collapse_description 0x0
+int string app_name 0x0
 int string appbar_scrolling_view_behavior 0x0
 int string bottom_sheet_behavior 0x0
 int string character_counter_content_description 0x0
@@ -3880,6 +3926,23 @@ int[] styleable LoadingImageView { 0x0, 0x0, 0x0 }
 int styleable LoadingImageView_circleCrop 0
 int styleable LoadingImageView_imageAspectRatio 1
 int styleable LoadingImageView_imageAspectRatioAdjust 2
+int[] styleable LottieAnimationView { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+int styleable LottieAnimationView_lottie_autoPlay 0
+int styleable LottieAnimationView_lottie_cacheComposition 1
+int styleable LottieAnimationView_lottie_colorFilter 2
+int styleable LottieAnimationView_lottie_enableMergePathsForKitKatAndAbove 3
+int styleable LottieAnimationView_lottie_fallbackRes 4
+int styleable LottieAnimationView_lottie_fileName 5
+int styleable LottieAnimationView_lottie_imageAssetsFolder 6
+int styleable LottieAnimationView_lottie_loop 7
+int styleable LottieAnimationView_lottie_progress 8
+int styleable LottieAnimationView_lottie_rawRes 9
+int styleable LottieAnimationView_lottie_renderMode 10
+int styleable LottieAnimationView_lottie_repeatCount 11
+int styleable LottieAnimationView_lottie_repeatMode 12
+int styleable LottieAnimationView_lottie_scale 13
+int styleable LottieAnimationView_lottie_speed 14
+int styleable LottieAnimationView_lottie_url 15
 int[] styleable MapAttrs { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
 int styleable MapAttrs_ambientEnabled 0
 int styleable MapAttrs_cameraBearing 1
@@ -4161,6 +4224,15 @@ int styleable OnSwipe_onTouchUp 8
 int styleable OnSwipe_touchAnchorId 9
 int styleable OnSwipe_touchAnchorSide 10
 int styleable OnSwipe_touchRegionId 11
+int[] styleable PersianDatePicker { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+int styleable PersianDatePicker_displayDescription 0
+int styleable PersianDatePicker_displayMonthNames 1
+int styleable PersianDatePicker_maxYear 2
+int styleable PersianDatePicker_minYear 3
+int styleable PersianDatePicker_selectedDay 4
+int styleable PersianDatePicker_selectedMonth 5
+int styleable PersianDatePicker_selectedYear 6
+int styleable PersianDatePicker_yearRange 7
 int[] styleable PopupWindow { 0x10102c9, 0x1010176, 0x0 }
 int styleable PopupWindow_android_popupAnimationStyle 0
 int styleable PopupWindow_android_popupBackground 1

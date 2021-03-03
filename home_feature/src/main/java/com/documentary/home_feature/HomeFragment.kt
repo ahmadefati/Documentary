@@ -10,14 +10,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.documentary.base.data.model.AppStatus
 import com.documentary.data.entities.CountryEntity
+import com.documentary.view.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
 
+    lateinit var navController: NavController
+
+    @Inject
+    lateinit var appStatus: AppStatus
 
     private val homeViewModel: HomeViewModel by viewModels()
     private val countriesAdapter: CountriesAdapter by lazy {
@@ -39,7 +48,14 @@ class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        navController = findNavController()
+        if (!appStatus.showSplash) {
+            safeNavigate(
+                navController,
+                HomeFragmentDirections.actionHomePageFragmentToSplashFragment()
+            )
+            appStatus.showSplash = true
+        }
         initRecyclerView()
         subscribe(null);
         filterCountries()

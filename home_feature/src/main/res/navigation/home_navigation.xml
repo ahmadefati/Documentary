@@ -4,12 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation"
     app:startDestination="@id/homePageFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.documentary.home_feature.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.documentary.home_feature.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_main">
-
-        <deepLink app:uri="app.merat://ui-home/HomePageFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+        <deepLink app:uri="app.documentary://ui-home/HomePageFragment" />
     </fragment>
 </navigation>

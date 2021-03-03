@@ -338,6 +338,8 @@ attr destination
 attr dialogCornerRadius
 attr dialogPreferredPadding
 attr dialogTheme
+attr displayDescription
+attr displayMonthNames
 attr displayOptions
 attr divider
 attr dividerHorizontal
@@ -598,6 +600,22 @@ attr listPreferredItemPaddingStart
 attr liteMode
 attr logo
 attr logoDescription
+attr lottie_autoPlay
+attr lottie_cacheComposition
+attr lottie_colorFilter
+attr lottie_enableMergePathsForKitKatAndAbove
+attr lottie_fallbackRes
+attr lottie_fileName
+attr lottie_imageAssetsFolder
+attr lottie_loop
+attr lottie_progress
+attr lottie_rawRes
+attr lottie_renderMode
+attr lottie_repeatCount
+attr lottie_repeatMode
+attr lottie_scale
+attr lottie_speed
+attr lottie_url
 attr mapType
 attr materialAlertDialogBodyTextStyle
 attr materialAlertDialogTheme
@@ -627,12 +645,14 @@ attr maxHeight
 attr maxImageSize
 attr maxVelocity
 attr maxWidth
+attr maxYear
 attr measureWithLargestChild
 attr menu
 attr mimeType
 attr minHeight
 attr minTouchTargetSize
 attr minWidth
+attr minYear
 attr mock_diagonalsColor
 attr mock_label
 attr mock_labelBackgroundColor
@@ -726,6 +746,9 @@ attr searchViewStyle
 attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
+attr selectedDay
+attr selectedMonth
+attr selectedYear
 attr shapeAppearance
 attr shapeAppearanceLargeComponent
 attr shapeAppearanceMediumComponent
@@ -913,6 +936,7 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr yearRange
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
@@ -920,6 +944,7 @@ attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
+bool abc_config_showMenuShortcutsWhenKeyboardPresent
 bool mtrl_btn_textappearance_all_caps
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
@@ -1025,6 +1050,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color error_color_material
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -1140,6 +1166,7 @@ dimen abc_action_bar_elevation_material
 dimen abc_action_bar_icon_vertical_padding_material
 dimen abc_action_bar_overflow_padding_end_material
 dimen abc_action_bar_overflow_padding_start_material
+dimen abc_action_bar_progress_bar_size
 dimen abc_action_bar_stacked_max_height
 dimen abc_action_bar_stacked_tab_max_width
 dimen abc_action_bar_subtitle_bottom_margin_material
@@ -1620,6 +1647,7 @@ drawable notify_panel_notification_icon_bg
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable touchable_background
 id BOTTOM_END
 id BOTTOM_START
 id NO_DEBUG
@@ -1694,6 +1722,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id automatic
 id baseline
 id blocking
 id bottom
@@ -1718,12 +1747,16 @@ id custom
 id customPanel
 id cut
 id dark
+id datePicker
+id dateText
 id date_picker_actions
+id dayNumberPicker
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
 id deltaRelative
+id descriptionTextView
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1757,6 +1790,7 @@ id ghost_view_holder
 id glide_custom_view_target_tag
 id gone
 id group_divider
+id hardware
 id home
 id honorRequest
 id hybrid
@@ -1782,10 +1816,12 @@ id line3
 id linear
 id listMode
 id list_item
+id lottie_layer_name
 id masked
 id message
 id middle
 id mini
+id monthNumberPicker
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -1817,6 +1853,7 @@ id multiply
 id nav_controller_view_tag
 id nav_host_fragment_container
 id navigation_header_container
+id negative_button
 id none
 id normal
 id notification_background
@@ -1837,11 +1874,14 @@ id pathRelative
 id percent
 id pin
 id position
+id positive_button
 id postLayout
 id progress_circular
 id progress_horizontal
 id radio
 id rectangles
+id restart
+id reverse
 id reverseSawtooth
 id right
 id right_icon
@@ -1877,6 +1917,7 @@ id slide
 id smallLabel
 id snackbar_action
 id snackbar_text
+id software
 id spacer
 id special_effects_controller_view_tag
 id spline
@@ -1923,6 +1964,7 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id today_button
 id top
 id topPanel
 id touch_outside
@@ -1945,6 +1987,7 @@ id visible_removing_fragment_view_tag
 id wide
 id wrap
 id wrap_content
+id yearNumberPicker
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -2024,6 +2067,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_password_icon
 layout design_text_input_start_icon
+layout dialog_picker
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -2061,6 +2105,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout sl_persian_date_picker
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_design_checkbox
@@ -2114,6 +2159,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_content_description
@@ -2932,6 +2978,7 @@ styleable LinearLayoutCompat android_baselineAligned android_baselineAlignedChil
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_height android_layout_weight android_layout_width
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable LottieAnimationView lottie_autoPlay lottie_cacheComposition lottie_colorFilter lottie_enableMergePathsForKitKatAndAbove lottie_fallbackRes lottie_fileName lottie_imageAssetsFolder lottie_loop lottie_progress lottie_rawRes lottie_renderMode lottie_repeatCount lottie_repeatMode lottie_scale lottie_speed lottie_url
 styleable MapAttrs ambientEnabled cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MaterialAlertDialog backgroundInsetBottom backgroundInsetEnd backgroundInsetStart backgroundInsetTop
 styleable MaterialAlertDialogTheme materialAlertDialogBodyTextStyle materialAlertDialogTheme materialAlertDialogTitleIconStyle materialAlertDialogTitlePanelStyle materialAlertDialogTitleTextStyle
@@ -2966,6 +3013,7 @@ styleable NavigationView android_background android_fitsSystemWindows android_ma
 styleable Navigator android_id android_label
 styleable OnClick clickAction targetId
 styleable OnSwipe dragDirection dragScale dragThreshold limitBoundsTo maxAcceleration maxVelocity moveWhenScrollAtTop nestedScrollFlags onTouchUp touchAnchorId touchAnchorSide touchRegionId
+styleable PersianDatePicker displayDescription displayMonthNames maxYear minYear selectedDay selectedMonth selectedYear yearRange
 styleable PopupWindow android_popupAnimationStyle android_popupBackground overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
 styleable PropertySet android_alpha android_visibility layout_constraintTag motionProgress visibilityMode

@@ -62,6 +62,7 @@ dependencies {
     api Libs.AndroidX.Lifecycle.viewmodel
     api Libs.AndroidX.Lifecycle.extensions
     api Libs.AndroidX.Lifecycle.livedata
+    api Libs.AndroidX.Lifecycle.common_java
 
     // Fragment and extension functions
     api Libs.AndroidX.Fragment.fragment
@@ -110,6 +111,14 @@ dependencies {
 
     //paging
     api Libs.Paging.paging3
+
+    //addLottie
+    api Libs.Lottie.addLottie
+
+    //Date
+    api Libs.Date.PersianDate
+    api Libs.Date.DatePiker
+
 
 }
 

@@ -105,6 +105,7 @@ object Libs {
             const val extensions = "androidx.lifecycle:lifecycle-extensions:$version"
             const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
             const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+            const val common_java = "androidx.lifecycle:lifecycle-common-java8:$version"
         }
 
         /**********************************************************************************************/
@@ -189,6 +190,22 @@ object Libs {
         private const val version = "3.0.0-alpha09"
         const val paging3 = "androidx.paging:paging-runtime-ktx:$version"
 
+    }
+
+    /**********************************************************************************************/
+
+    object Lottie {
+        private const val lottieVersion = "3.4.0"
+        const val addLottie = "com.airbnb.android:lottie:$lottieVersion"
+
+    }
+
+    /**********************************************************************************************/
+
+    object Date {
+        private const val version = "0.8"
+        const val PersianDate = "com.github.samanzamani.persiandate:PersianDate:$version"
+        const val DatePiker = "com.github.aliab:Persian-Date-Picker-Dialog:1.4"
     }
 
 

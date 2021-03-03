@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import com.documentary.app.main.MainActivity
 import com.documentary.base.Constants
+import com.documentary.base.data.model.AppStatus
 import com.documentary.base.utils.AppCoroutineDispatchers
 import dagger.Module
 import dagger.Provides
@@ -40,4 +41,8 @@ object AppModule {
         computation = Dispatchers.Default,
         main = Dispatchers.Main
     )
+
+    @Singleton
+    @Provides
+    fun provideAppStatus(): AppStatus = AppStatus()
 }

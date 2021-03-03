@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_dashboard">
+    app:startDestination="@id/home_navigation">
     <include app:graph="@navigation/home_navigation" />
-    <!--    <fragment-->
-    <!--        android:id="@+id/navigation_home"-->
-    <!--        android:name="com.documentary.home_feature.HomeFragment"-->
-    <!--        android:label="@string/title_home"-->
-    <!--        tools:layout="@layout/fragment_main" />-->
+    <include app:graph="@navigation/repo_navigation" />
+    <include app:graph="@navigation/nav_notification" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.documentary.repo_feature.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.documentary.app.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+    <!-- <fragment
+         android:id="@+id/navigation_notifications"
+         android:name="com.documentary.notification_feature.notifications.NotificationsFragment"
+         android:label="@string/title_notifications"
+         tools:layout="@layout/fragment_notifications" />-->
 </navigation>
