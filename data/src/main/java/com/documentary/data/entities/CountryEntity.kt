@@ -3,9 +3,11 @@ package com.documentary.data.entities
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.squareup.moshi.JsonClass
 
 
 @Entity(tableName = "country")
+@JsonClass(generateAdapter = true)
 data class CountryEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,

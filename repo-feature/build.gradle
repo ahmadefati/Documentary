@@ -31,6 +31,16 @@ android {
 
         viewBinding true
     }
+
+    flavorDimensions "mod"
+    productFlavors {
+        webApi {
+            dimension "mod"
+        }
+        mock {
+            dimension "mod"
+        }
+    }
 }
 
 dependencies {

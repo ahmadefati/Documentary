@@ -23,6 +23,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    flavorDimensions "mod"
+    productFlavors {
+        webApi {
+            dimension "mod"
+        }
+        mock {
+            dimension "mod"
+        }
+    }
 }
 
 dependencies {
@@ -31,4 +41,6 @@ dependencies {
 
     // Room
     kapt Libs.AndroidX.Room.compiler
+    kapt Libs.Moshi.moshiCodegen
+    implementation Libs.Moshi.moshi
 }

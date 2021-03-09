@@ -23,6 +23,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    flavorDimensions "mod"
+    productFlavors {
+        webApi {
+            dimension "mod"
+        }
+        mock {
+            dimension "mod"
+        }
+    }
 }
 
 dependencies {
@@ -119,6 +129,8 @@ dependencies {
     api Libs.Date.PersianDate
     api Libs.Date.DatePiker
 
+    kapt Libs.Moshi.moshiCodegen
+    implementation Libs.Moshi.moshi
 
 }
 
