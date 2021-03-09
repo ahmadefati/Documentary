@@ -1,5 +1,0 @@
-com/documentary/base/utils/DateUtil_Factory.java
- com.documentary.base.utils.DateUtil_Factory
- com.documentary.base.utils.DateUtil_Factory$InstanceHolder
-com/documentary/base/BuildConfig.java
- com.documentary.base.BuildConfig
