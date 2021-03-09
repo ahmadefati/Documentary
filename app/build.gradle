@@ -128,7 +128,7 @@ dependencies {
     implementation project(':common-ui-view')
     implementation project(':common-ui-res')
     implementation project(':home_feature')
-    implementation project(':login')
+
     implementation project(':common-databinding')
     implementation project(':repo-feature')
     implementation project(':notification_feature')

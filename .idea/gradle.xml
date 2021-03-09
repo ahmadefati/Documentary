@@ -20,7 +20,6 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/home_feature" />
-            <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/notification_feature" />
             <option value="$PROJECT_DIR$/repo-feature" />
           </set>
