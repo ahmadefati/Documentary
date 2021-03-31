@@ -19,11 +19,4 @@ class GetAllCountries @Inject constructor(
         }.flowOn(dispatchers.io)
     }
 
-    /*override fun invoke(): Flow<List<CountryEntity>> = flow {
-        emit(countryStore.fetchCollection(1, true))
-    }.flowOn(dispatchers.io)*/
-    /*override fun invoke(): Flow<List<CountryEntity>> = flow {
-        emit(repository.getAllCountries())
-    }.flowOn(dispatchers.io)*/
-
 }

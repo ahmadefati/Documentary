@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -87,19 +86,20 @@ class DashboardFragment : Fragment() {
             // Show the retry state if initial load or refresh fails.
             retry_button.isVisible = loadState.source.refresh is LoadState.Error
 
+//            no_data.visibility =GONE
             // Toast on any error, regardless of whether it came from RemoteMediator or PagingSource
             val errorState = loadState.source.append as? LoadState.Error
                 ?: loadState.source.prepend as? LoadState.Error
                 ?: loadState.append as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
-                ?: loadState.mediator?.refresh as? LoadState.Error
+//                ?: loadState.mediator?.refresh as? LoadState.Error
             errorState?.let {
                 Toast.makeText(
                     activity,
                     "\uD83D\uDE28 Wooops ${it.error}",
                     Toast.LENGTH_LONG
                 ).show()
-                no_data.visibility = VISIBLE
+//                no_data.visibility = VISIBLE
             }
         }
 

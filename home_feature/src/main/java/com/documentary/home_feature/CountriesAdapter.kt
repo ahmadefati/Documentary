@@ -2,19 +2,19 @@ package com.documentary.home_feature
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import com.documentary.common_databinding.databinding.DataBoundListAdapter
 import com.documentary.data.entities.CountryEntity
 import com.documentary.home_feature.databinding.ItemCountryRowBinding
 
 class CountriesAdapter(
-    private val onCountryItem: (countryEntity: CountryEntity) -> Unit
-) : ListAdapter<CountryEntity, CountriesAdapter.CountryViewHolder>(object :
+) : DataBoundListAdapter<CountryEntity, ItemCountryRowBinding>(diffCallback = object :
     DiffUtil.ItemCallback<CountryEntity>() {
 
     override fun areItemsTheSame(oldItem: CountryEntity, newItem: CountryEntity): Boolean {
-        return oldItem.id == newItem.id
+        return false
     }
 
     override fun areContentsTheSame(oldItem: CountryEntity, newItem: CountryEntity): Boolean {
@@ -22,33 +22,27 @@ class CountriesAdapter(
     }
 }) {
 
-    inner class CountryViewHolder(private val dataBinding: ItemCountryRowBinding) :
-        RecyclerView.ViewHolder(dataBinding.root) {
 
-        init {
-            dataBinding.countryName.setOnClickListener {
-                onCountryItem(getItem(adapterPosition))
-            }
-        }
-
-        fun bind(country: CountryEntity) {
-            itemView.apply {
-                dataBinding.countryData = country
-            }
-
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
-        return CountryViewHolder(
-            ItemCountryRowBinding.inflate(
-                LayoutInflater.from(parent.context), parent,
-                false
-            )
+    override fun createBinding(parent: ViewGroup): ItemCountryRowBinding {
+        return DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_country_row,
+            parent,
+            false
         )
     }
 
-    override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.bind(getItem(position))
+    override fun bind(binding: ItemCountryRowBinding, item: CountryEntity, position: Int) {
+        binding.apply {
+            countryData = item
+            val that = this@CountriesAdapter
+            horizontalArticleCard.setOnClickListener {
+                Toast.makeText(
+                    horizontalArticleCard.context,
+                    "click ${item.country}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 }

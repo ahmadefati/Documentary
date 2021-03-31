@@ -4,6 +4,9 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
+import com.documentary.base.data.entities.ErrorResult
+import com.documentary.base.data.entities.Success
+import com.documentary.data.BuildConfig
 import com.documentary.data.dataSource.*
 import com.documentary.data.entities.RemoteKeys
 import com.documentary.data.entities.Repo
@@ -21,13 +24,9 @@ private const val GITHUB_STARTING_PAGE_INDEX = 1
 
 @OptIn(ExperimentalPagingApi::class)
 class GithubRemoteMediator @Inject constructor(
-//    private val query: String,
-//    private val service: RepoService,
-//    private val repoDatabase: DocumentaryDatabase,
     private val localRepoDataSourceDeletable: LocalDataSourceDeletable,
     private val localRepoDataSourceWritable: LocalRepoDataSourceWritable,
     private val localRepoDataSourceReadable: LocalRepoDataSourceReadable,
-//    private val localRemoteKeyDataSourceDeletable: LocalRemoteKeyDataSourceDeletable,
     private val localRemoteKeyDataSourceWritable: LocalRemoteKeyDataSourceWritable,
     private val localRemoteKeyDataSourceReadable: LocalRemoteKeyDataSourceReadable,
     private val remoteRepoDataSource: RemoteRepoDataSource
@@ -82,10 +81,10 @@ class GithubRemoteMediator @Inject constructor(
                     state.config.pageSize
                 )
             )
-            val body = apiResponse.body()
-            if (apiResponse.isSuccessful && body != null) {
-                val repos = body.items
-                val endOfPaginationReached = repos.isEmpty()
+            if (apiResponse is Success && apiResponse != null && apiResponse.data.items.isNotEmpty()) {
+                val repos = apiResponse.data.items
+                var endOfPaginationReached: Boolean = repos.isEmpty()
+
                 if (loadType == LoadType.REFRESH) {
 //                localRemoteKeyDataSourceDeletable.delete(Unit)
                     withContext(Dispatchers.IO) {
@@ -94,6 +93,7 @@ class GithubRemoteMediator @Inject constructor(
 //                    repoDatabase.remoteKeysDao().clearRemoteKeys()
 //                    repoDatabase.reposDao().clearRepos()
                 }
+
                 val prevKey = if (page == GITHUB_STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = repos.map {
@@ -101,9 +101,11 @@ class GithubRemoteMediator @Inject constructor(
                 }
                 localRemoteKeyDataSourceWritable.write(keys)
                 localRepoDataSourceWritable.write(repos)
+                if (BuildConfig.FLAVOR == "mock")
+                    endOfPaginationReached = true
                 return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
             } else {
-                return MediatorResult.Error(Throwable(apiResponse.message()))
+                return MediatorResult.Error((apiResponse as ErrorResult).throwable)
             }
 
         } catch (exception: IOException) {

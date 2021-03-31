@@ -16,10 +16,6 @@ object DaoModule {
     @Singleton
     fun provideCountryDAO(db: DocumentaryDatabase) = db.countryDao()
 
-/*    @Provides
-    @Singleton
-    fun provideCountryInfoDAO(db: DocumentaryDatabase) = db.countryInfoDao()*/
-
     @Provides
     @Singleton
     fun provideAllInfoDAO(db: DocumentaryDatabase) = db.allInfoDao()
@@ -31,13 +27,6 @@ object DaoModule {
     @Provides
     @Singleton
     fun provideRemoteKeysDAO(db: DocumentaryDatabase) = db.remoteKeysDao()
-
-
-//    ********************************************
-
-//    @Binds
-//    @ActivityRetainedScoped
-//    fun provideRemoteRepoDataSourceReadable(dataSource: RemoteRepoDataSource) : RemoteRepoDataSourceReadable
 
 
 }

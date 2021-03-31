@@ -16,8 +16,4 @@ class GetPreferences @Inject constructor(
         return dataStore.data.flowOn(dispatchers.io)
     }
 
-    /*  override fun invoke(): Flow<Preferences> {
-          return dataStore.data.flowOn(dispatchers.io)
-      }*/
-
 }

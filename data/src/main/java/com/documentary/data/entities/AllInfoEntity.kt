@@ -2,8 +2,10 @@ package com.documentary.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.JsonClass
 
 @Entity(tableName = "allInfo")
+@JsonClass(generateAdapter = true)
 data class AllInfoEntity(
     @PrimaryKey(autoGenerate = true) val allId: Int,
     val active: Int,

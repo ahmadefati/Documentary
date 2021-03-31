@@ -3,8 +3,10 @@ package com.documentary.data.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.JsonClass
 
 @Entity(tableName = "repos")
+@JsonClass(generateAdapter = true)
 data class Repo(
     @PrimaryKey @field:SerializedName("id") val id: Long,
     @field:SerializedName("name") val name: String,

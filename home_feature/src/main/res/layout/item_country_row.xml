@@ -14,11 +14,11 @@
         android:id="@+id/horizontalArticleCard"
         backgroundColor="@{countryData.todayCases}"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_marginStart="@dimen/horizontal_article_layout_horizontal_margin"
         android:layout_marginEnd="@dimen/horizontal_article_layout_horizontal_margin"
         android:layout_marginBottom="4dp"
-        android:background="@color/redButton"
+        android:background="@color/black"
         app:cardCornerRadius="@dimen/radius_normal"
         app:cardElevation="@dimen/elevation">
 

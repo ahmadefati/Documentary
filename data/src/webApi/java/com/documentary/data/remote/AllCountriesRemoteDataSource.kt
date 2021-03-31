@@ -11,8 +11,6 @@ class AllCountriesRemoteDataSource @Inject constructor(
     private val service: SampleService
 ) {
 
-    //    suspend fun getAllCountries() = service.getAllCountries().toResult()
-//    suspend fun getAllInfo() = service.getAllInfo().toResult()
     suspend fun getAllCountries(): Result<List<CountryEntity>> =
         try {
             service.getAllCountries().toResult()

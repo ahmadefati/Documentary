@@ -19,17 +19,6 @@ println("APK version code: " + appVersionCode)
 def useReleaseKeystore = rootProject.file("release/app-release.jks").exists()
 
 android {
-    /*compileSdkVersion 30
-    buildToolsVersion "30.0.2"
-
-    defaultConfig {
-        applicationId "com.sample.documentary"
-        minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"*/
     compileSdkVersion buildConfig.compileSdk
 
     defaultConfig {
@@ -38,19 +27,11 @@ android {
         targetSdkVersion buildConfig.targetSdk
         versionCode appVersionCode
         versionName "1.0.0"
-
         // For now we're sticking to just shipping EN
         resConfigs "en"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    /*  buildTypes {
-          release {
-              minifyEnabled false
-              proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-          }
-      }*/
     lintOptions {
         // Disable lintVital. Not needed since lint is run on CI
         checkReleaseBuilds false

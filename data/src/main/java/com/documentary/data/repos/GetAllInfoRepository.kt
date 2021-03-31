@@ -23,16 +23,6 @@ class GetAllInfoRepository @Inject constructor(
     }*/
 
     suspend fun getAllInfo(): AllInfoEntity {
-        /*  return when (val result = allInfoRemote.getAllInfo()) {
-              is Success -> {
-                  result.data
-              }
-              is ErrorResult -> {
-                  result.throwable
-
-
-              }
-          }*/
         val result = allInfoRemote.getAllInfo() as Success
         return result.data
     }

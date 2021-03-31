@@ -21,19 +21,17 @@ class HomeViewModel @ViewModelInject constructor(
 
 ) : BaseViewModel<ObjectsViewState>(ObjectsViewState()) {
 
-    internal lateinit var countries: List<CountryEntity>
+    internal var countries: List<CountryEntity>? = null
     private val loadingState = ObservableLoadingCounter()
 
 
-    val CountryList: Flow<List<CountryEntity>>
+    val countryList: Flow<List<CountryEntity>>
         get() = getAllCountries.observe()
 
     val getInfoEntity: Flow<AllInfoEntity>
         get() = getAllInfo.observe()
 
     init {
-        getAllCountries(Unit)
-        getAllInfo(Unit)
 
         viewModelScope.launch {
             getInfoEntity
@@ -42,9 +40,11 @@ class HomeViewModel @ViewModelInject constructor(
         }
 
         viewModelScope.launch {
-            CountryList
+            countryList
                 .distinctUntilChanged()
-                .collectAndSetState { copy(countryEntity = it) }
+                .collectAndSetState {
+                    copy(countryEntity = it)
+                }
         }
 
         viewModelScope.launch {
@@ -57,6 +57,22 @@ class HomeViewModel @ViewModelInject constructor(
     fun selectCountry(asdasd: CountryEntity) {
 //        TODO("Not yet implemented")
         Timber.i(asdasd.country)
+    }
+
+    fun getAllCountries() {
+        getAllCountries(Unit)
+        getAllInfo(Unit)
+    }
+
+    fun collectCountryList(country: List<CountryEntity>) {
+        viewModelScope.launch {
+            countryList
+                .distinctUntilChanged()
+                .collectAndSetState {
+                    copy(countryEntity = country)
+                }
+        }
+
     }
 
 }

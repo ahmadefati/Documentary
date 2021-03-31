@@ -11,27 +11,11 @@ class CountryInfoLocalDataSource @Inject constructor(
 
     suspend fun getAllCountries() = countryDao.getAllCountries()
 
-
     suspend fun insertCountries(data: List<CountryEntity>?) {
-//        docDb.withTransaction {
         data?.let {
             countryDao.insertCountry(data)
-            /*data.forEach { country ->
-                country.countryInfo?.let { infoEntity ->
-                    insertCountryInfo(
-                        country.country,
-                        infoEntity
-                    )
-                }
-            }*/
+
         }
-//        }
     }
-
-    /*  private suspend fun insertCountryInfo(country: String, countyInfo: CountryInfoEntity) {
-          countyInfo.countryName = country
-          docDb.countryInfoDao().insertCountryInfo(countyInfo)
-      }*/
-
 
 }

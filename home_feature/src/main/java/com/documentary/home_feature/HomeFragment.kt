@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.documentary.base.data.model.AppStatus
 import com.documentary.data.entities.CountryEntity
+import com.documentary.view.autoCleared
 import com.documentary.view.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -29,25 +30,11 @@ class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
     lateinit var appStatus: AppStatus
 
     private val homeViewModel: HomeViewModel by viewModels()
-    private val countriesAdapter: CountriesAdapter by lazy {
-        CountriesAdapter {
-            homeViewModel.selectCountry(it)
-        }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false).also {
-            Log.e("parttt", "home")
+    private var countriesAdapter by autoCleared<CountriesAdapter>()
 
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         navController = findNavController()
         if (!appStatus.showSplash) {
             safeNavigate(
@@ -56,6 +43,24 @@ class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
             )
             appStatus.showSplash = true
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        return inflater.inflate(R.layout.fragment_main, container, false).also {
+            Log.e("parttt", "home")
+
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        homeViewModel.getAllCountries()
         initRecyclerView()
         subscribe(null);
         filterCountries()
@@ -79,9 +84,13 @@ class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
     }
 
     private fun initRecyclerView() {
+        countriesAdapter = CountriesAdapter(
+            // homeViewModel.selectCountry(it)
+        )
         recyclerHome1?.apply {
-            adapter = countriesAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            adapter = countriesAdapter
+
         }
     }
 
@@ -96,7 +105,7 @@ class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
                     target[0].toUpperCase()
                 }
 
-                val filterResult = homeViewModel.countries.filter {
+                val filterResult = homeViewModel.countries?.filter {
                     it.country.contains(target)
                 }
                 subscribe(filterResult)
@@ -107,6 +116,5 @@ class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
 
         })
     }
-
 
 }

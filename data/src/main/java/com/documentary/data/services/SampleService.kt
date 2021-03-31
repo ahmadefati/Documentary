@@ -13,5 +13,4 @@ interface SampleService {
     @GET("all")
     suspend fun getAllInfo(): Response<AllInfoEntity>
 
-
 }

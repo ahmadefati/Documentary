@@ -1,6 +1,8 @@
 package com.documentary.app.di
 
 import com.documentary.data.dataSource.*
+import com.documentary.data.remote.RemoteRepoDataSource
+import com.documentary.data.remote.RemoteRepoDataSourceReadable
 import com.documentary.data.repos.GithubRepository
 import com.documentary.data.repos.IGithubRepository
 import dagger.Binds
@@ -26,11 +28,6 @@ abstract class DataSourceModule {
     @Binds
     @ActivityRetainedScoped
     abstract fun provideLocalRemoteKeyDataSourceReadable(dataSource: LocalRemoteKeyDataSource): LocalRemoteKeyDataSourceReadable
-
-    /* @Binds
-     @ActivityRetainedScoped
-     abstract fun provideLocalRemoteKeyDataSourceDeletable(dataSource: LocalRemoteKeyDataSource): LocalRemoteKeyDataSourceDeletable*/
-
 
     @Binds
     @ActivityRetainedScoped
