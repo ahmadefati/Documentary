@@ -22,9 +22,6 @@ class DashboardViewModel @ViewModelInject constructor(
 
     private var currentQueryValue: String? = null
 
-    /*init {
-        updateDataSource("")
-    }*/
 
     fun testsearch(query: String) {
         viewModelScope.launch {

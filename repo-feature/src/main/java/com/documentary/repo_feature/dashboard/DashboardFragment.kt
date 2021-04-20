@@ -93,7 +93,7 @@ class DashboardFragment : Fragment() {
             errorState?.let {
                 Toast.makeText(
                     activity,
-                    "\uD83D\uDE28 Wooops ${it.error}",
+                    "\uD83D\uDE28 An error has occurred: ${it.error}",
                     Toast.LENGTH_LONG
                 ).show()
 //                no_data.visibility = VISIBLE

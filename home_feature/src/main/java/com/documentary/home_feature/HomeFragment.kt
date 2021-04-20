@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
+class HomeFragment : Fragment() {
 
     lateinit var navController: NavController
 

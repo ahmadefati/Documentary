@@ -8,16 +8,13 @@ import com.documentary.domain.useCase.country.GetAllCountries
 import com.documentary.domain.useCase.country.GetAllInfo
 import com.documentary.view.BaseViewModel
 import com.documentary.view.ObservableLoadingCounter
-import com.documentary.view.SnackbarManager
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class HomeViewModel @ViewModelInject constructor(
     private val getAllCountries: GetAllCountries,
-    private val getAllInfo: GetAllInfo,
-    private val snackbarManager: SnackbarManager
-
+    private val getAllInfo: GetAllInfo
 ) : BaseViewModel<ObjectsViewState>(ObjectsViewState()) {
 
     internal var countries: List<CountryView>? = null

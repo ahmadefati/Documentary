@@ -7,7 +7,7 @@
 
         <variable
             name="info"
-            type="com.documentary.data.entities.AllInfoEntity" />
+            type="com.documentary.home_feature.AllInfoView" />
 
     </data>
 
