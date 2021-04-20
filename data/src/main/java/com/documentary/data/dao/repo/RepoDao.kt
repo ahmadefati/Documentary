@@ -5,20 +5,20 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.documentary.data.entities.Repo
+import com.documentary.data.entities.RepoEntity
 
 @Dao
 interface RepoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(repos: List<Repo>)
+    fun insertAll(repoEntities: List<RepoEntity>)
 
     @Query(
         "SELECT * FROM repos WHERE " +
                 "name LIKE :queryString OR description LIKE :queryString " +
                 "ORDER BY stars DESC, name ASC"
     )
-    fun reposByName(queryString: String): PagingSource<Int, Repo>
+    fun reposByName(queryString: String): PagingSource<Int, RepoEntity>
 
     @Query("DELETE FROM repos")
     fun clearRepos()

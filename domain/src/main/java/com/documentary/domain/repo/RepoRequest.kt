@@ -1,4 +1,4 @@
-package com.documentary.data.entities
+package com.documentary.domain.repo
 
 data class RepoRequest(
     val url: String,

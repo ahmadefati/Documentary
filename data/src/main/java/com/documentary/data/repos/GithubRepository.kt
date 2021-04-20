@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import com.documentary.base.utils.AppCoroutineDispatchers
 import com.documentary.data.dataSource.LocalRepoDataSource
 import com.documentary.data.dataSource.LocalRepoDataSourceReadable
-import com.documentary.data.entities.Repo
+import com.documentary.data.entities.RepoEntity
 import com.documentary.data.remote.GithubRemoteMediator
 import dagger.Reusable
 import javax.inject.Inject
@@ -18,7 +18,7 @@ class GithubRepository @Inject constructor(
     private val githubRemoteMediator: GithubRemoteMediator,
     private val dispatchers: AppCoroutineDispatchers
 ) : IGithubRepository {
-    override fun getPagingSourceFactory(query: String): PagingSource<Int, Repo> {
+    override fun getPagingSourceFactory(query: String): PagingSource<Int, RepoEntity> {
         val dbQuery = "%${query.replace(' ', '%')}%"
         return localRepoDataSource.read(LocalRepoDataSourceReadable.Params(dbQuery))
 

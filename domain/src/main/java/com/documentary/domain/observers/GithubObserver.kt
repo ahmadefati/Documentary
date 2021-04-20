@@ -5,10 +5,13 @@ import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.documentary.data.entities.Repo
+import androidx.paging.map
 import com.documentary.data.repos.GithubRepository
 import com.documentary.domain.PagingInteractor
+import com.documentary.domain.repo.Repo
+import com.documentary.domain.repo.toRepo
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.mapLatest
 import javax.inject.Inject
 
 class GithubObserver @Inject constructor(
@@ -31,8 +34,11 @@ class GithubObserver @Inject constructor(
             config = params.pagingConfig,
             remoteMediator = githubRepository.getGithubRemoteMediator(params.query),
             pagingSourceFactory = pagingSourceFactory
-        ).flow
-
+        ).flow.mapLatest { pagingData ->
+            pagingData.map { entity ->
+                entity.toRepo()
+            }
+        }
 
     }
 

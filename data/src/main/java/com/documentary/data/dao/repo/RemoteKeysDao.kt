@@ -4,16 +4,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.documentary.data.entities.RemoteKeys
+import com.documentary.data.entities.RemoteKeysModel
 
 @Dao
 interface RemoteKeysDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(remoteKey: List<RemoteKeys>)
+    fun insertAll(remoteKeyModel: List<RemoteKeysModel>)
 
     @Query("SELECT * FROM remote_keys WHERE repoId = :repoId")
-    fun remoteKeysRepoId(repoId: Long): RemoteKeys
+    fun remoteKeysRepoId(repoId: Long): RemoteKeysModel
 
     @Query("DELETE FROM remote_keys")
     fun clearRemoteKeys()

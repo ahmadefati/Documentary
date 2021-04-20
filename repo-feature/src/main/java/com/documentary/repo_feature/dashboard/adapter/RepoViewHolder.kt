@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.documentary.data.entities.Repo
 import com.documentary.repo_feature.R
+import com.documentary.repo_feature.dashboard.RepoView
 
 class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val name: TextView = view.findViewById(R.id.repo_name)
@@ -17,19 +17,19 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val language: TextView = view.findViewById(R.id.repo_language)
     private val forks: TextView = view.findViewById(R.id.repo_forks)
 
-    private var repo: Repo? = null
+    private var repoView: RepoView? = null
 
     init {
         view.setOnClickListener {
-            repo?.url?.let { url ->
+            repoView?.url?.let { url ->
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 view.context.startActivity(intent)
             }
         }
     }
 
-    fun bind(repo: Repo?) {
-        if (repo == null) {
+    fun bind(repoView: RepoView?) {
+        if (repoView == null) {
             val resources = itemView.resources
             name.text = resources.getString(R.string.loading)
             description.visibility = View.GONE
@@ -37,30 +37,30 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             stars.text = resources.getString(R.string.unknown)
             forks.text = resources.getString(R.string.unknown)
         } else {
-            showRepoData(repo)
+            showRepoData(repoView)
         }
     }
 
-    private fun showRepoData(repo: Repo) {
-        this.repo = repo
-        name.text = repo.fullName
+    private fun showRepoData(repoView: RepoView) {
+        this.repoView = repoView
+        name.text = repoView.fullName
 
         // if the description is missing, hide the TextView
         var descriptionVisibility = View.GONE
-        if (repo.description != null) {
-            description.text = repo.description
+        if (repoView.description != null) {
+            description.text = repoView.description
             descriptionVisibility = View.VISIBLE
         }
         description.visibility = descriptionVisibility
 
-        stars.text = repo.stars.toString()
-        forks.text = repo.forks.toString()
+        stars.text = repoView.stars.toString()
+        forks.text = repoView.forks.toString()
 
         // if the language is missing, hide the label and the value
         var languageVisibility = View.GONE
-        if (!repo.language.isNullOrEmpty()) {
+        if (!repoView.language.isNullOrEmpty()) {
             val resources = this.itemView.context.resources
-            language.text = resources.getString(R.string.language, repo.language)
+            language.text = resources.getString(R.string.language, repoView.language)
             languageVisibility = View.VISIBLE
         }
         language.visibility = languageVisibility

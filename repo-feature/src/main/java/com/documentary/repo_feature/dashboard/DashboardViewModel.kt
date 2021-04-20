@@ -3,8 +3,9 @@ package com.documentary.repo_feature.dashboard
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
-import com.documentary.data.entities.Repo
 import com.documentary.domain.observers.GithubObserver
+import com.documentary.domain.repo.Repo
+import com.documentary.home_feature.toRepoView
 import com.documentary.view.BaseViewModel
 import com.documentary.view.ObservableLoadingCounter
 import kotlinx.coroutines.flow.*
@@ -53,7 +54,7 @@ class DashboardViewModel @ViewModelInject constructor(
         updateDataSource(queryString)
         val newResult: Flow<PagingData<UiModel>> =
             pagedList
-                .map { pagingData -> pagingData.map { UiModel.RepoItem(it) } }
+                .map { pagingData -> pagingData.map { UiModel.RepoItem(it.toRepoView()) } }
                 .map {
                     it.insertSeparators<UiModel.RepoItem, UiModel> { before, after ->
                         if (after == null) {
@@ -90,9 +91,9 @@ class DashboardViewModel @ViewModelInject constructor(
 }
 
 sealed class UiModel {
-    data class RepoItem(val repo: Repo) : UiModel()
+    data class RepoItem(val repoView: RepoView) : UiModel()
     data class SeparatorItem(val description: String) : UiModel()
 }
 
 private val UiModel.RepoItem.roundedStarCount: Int
-    get() = this.repo.stars / 10_000
+    get() = this.repoView.stars / 10_000

@@ -31,7 +31,8 @@ abstract class BaseViewModel<StateView>(
         get() = state.asLiveData()
 
     protected suspend fun <T> Flow<T>.collectAndSetState(reducer: StateView.(T) -> StateView) {
-        return collect { item -> setState { reducer(item) } }
+        return collect { setState { reducer(it) } }
+//        return collect { item -> setState { reducer(item) } }
     }
 
     fun <A> selectObserve(prop1: KProperty1<StateView, A>): LiveData<A> {

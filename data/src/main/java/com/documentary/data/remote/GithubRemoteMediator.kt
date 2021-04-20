@@ -8,9 +8,9 @@ import com.documentary.base.data.entities.ErrorResult
 import com.documentary.base.data.entities.Success
 import com.documentary.data.BuildConfig
 import com.documentary.data.dataSource.*
-import com.documentary.data.entities.RemoteKeys
-import com.documentary.data.entities.Repo
-import com.documentary.data.entities.RepoRequest
+import com.documentary.data.entities.RemoteKeysModel
+import com.documentary.data.entities.RepoEntity
+import com.documentary.data.entities.RepoRequestModel
 import com.documentary.data.services.IN_QUALIFIER
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -30,7 +30,7 @@ class GithubRemoteMediator @Inject constructor(
     private val localRemoteKeyDataSourceWritable: LocalRemoteKeyDataSourceWritable,
     private val localRemoteKeyDataSourceReadable: LocalRemoteKeyDataSourceReadable,
     private val remoteRepoDataSource: RemoteRepoDataSource
-) : RemoteMediator<Int, Repo>() {
+) : RemoteMediator<Int, RepoEntity>() {
     lateinit var query: String
 
     operator fun invoke(parameters: Params): GithubRemoteMediator {
@@ -38,7 +38,10 @@ class GithubRemoteMediator @Inject constructor(
         return this
     }
 
-    override suspend fun load(loadType: LoadType, state: PagingState<Int, Repo>): MediatorResult {
+    override suspend fun load(
+        loadType: LoadType,
+        state: PagingState<Int, RepoEntity>
+    ): MediatorResult {
 
         val page = when (loadType) {
             LoadType.REFRESH -> {
@@ -74,7 +77,7 @@ class GithubRemoteMediator @Inject constructor(
 
         try {
             val apiResponse = remoteRepoDataSource.read(
-                RepoRequest(
+                RepoRequestModel(
                     "https://api.github.com/search/repositories?sort=stars",
                     apiQuery,
                     page,
@@ -97,7 +100,7 @@ class GithubRemoteMediator @Inject constructor(
                 val prevKey = if (page == GITHUB_STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = repos.map {
-                    RemoteKeys(repoId = it.id, prevKey = prevKey, nextKey = nextKey)
+                    RemoteKeysModel(repoId = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
                 localRemoteKeyDataSourceWritable.write(keys)
                 localRepoDataSourceWritable.write(repos)
@@ -115,7 +118,7 @@ class GithubRemoteMediator @Inject constructor(
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Repo>): RemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, RepoEntity>): RemoteKeysModel? {
         // Get the last page that was retrieved, that contained items.
         // From that last page, get the last item
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
@@ -126,7 +129,7 @@ class GithubRemoteMediator @Inject constructor(
             }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Repo>): RemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, RepoEntity>): RemoteKeysModel? {
         // Get the first page that was retrieved, that contained items.
         // From that first page, get the first item
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
@@ -138,8 +141,8 @@ class GithubRemoteMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
-        state: PagingState<Int, Repo>
-    ): RemoteKeys? {
+        state: PagingState<Int, RepoEntity>
+    ): RemoteKeysModel? {
         // The paging library is trying to load data after the anchor position
         // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->

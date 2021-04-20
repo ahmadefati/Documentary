@@ -1,15 +1,8 @@
-package com.documentary.data.entities
-
-import androidx.room.Entity
-import androidx.room.Ignore
-import androidx.room.PrimaryKey
-import com.squareup.moshi.JsonClass
+package com.documentary.domain.home
 
 
-@Entity(tableName = "country")
-@JsonClass(generateAdapter = true)
-data class CountryEntity(
-    @PrimaryKey(autoGenerate = true)
+data class Country(
+
     var id: Int? = null,
     var country: String = "",
     var active: Int? = 0,
@@ -33,13 +26,11 @@ data class CountryEntity(
     var todayDeaths: Int? = 0,
     var todayRecovered: Int? = 0,
     var updated: Long? = 0,
-    @Ignore var countryInfo: CountryInfoEntity? = null
+    var countryInfo: CountryInfo? = null
 )
 
-@Entity(tableName = "countryInfo")
-@JsonClass(generateAdapter = true)
-data class CountryInfoEntity(
-    @PrimaryKey var _id: Int,
+data class CountryInfo(
+    var _id: Int,
     var flag: String?,
     var long: Double,
     var countryName: String?

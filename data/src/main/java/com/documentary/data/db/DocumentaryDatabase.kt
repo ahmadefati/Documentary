@@ -10,7 +10,7 @@ import com.documentary.data.dao.repo.RepoDao
 import com.documentary.data.entities.*
 
 @Database(
-    entities = [CountryEntity::class, AllInfoEntity::class, CountryInfoEntity::class, Repo::class, RemoteKeys::class],
+    entities = [CountryEntity::class, AllInfoEntity::class, CountryInfoEntity::class, RepoEntity::class, RemoteKeysModel::class],
     version = 1
 )
 @TypeConverters(Converters::class)

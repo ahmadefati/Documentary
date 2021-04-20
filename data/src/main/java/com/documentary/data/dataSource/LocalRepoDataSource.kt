@@ -5,7 +5,7 @@ import com.documentary.data.dao.repo.RepoDao
 import com.documentary.data.dataSource.iDataSource.Deletable
 import com.documentary.data.dataSource.iDataSource.Readable
 import com.documentary.data.dataSource.iDataSource.Writable
-import com.documentary.data.entities.Repo
+import com.documentary.data.entities.RepoEntity
 import javax.inject.Inject
 
 class LocalRepoDataSource @Inject constructor
@@ -13,11 +13,11 @@ class LocalRepoDataSource @Inject constructor
     LocalRepoDataSourceReadable,
     LocalRepoDataSourceWritable,
     LocalDataSourceDeletable {
-    override fun read(input: LocalRepoDataSourceReadable.Params): PagingSource<Int, Repo> {
+    override fun read(input: LocalRepoDataSourceReadable.Params): PagingSource<Int, RepoEntity> {
         return repoDao.reposByName(input.queryString)
     }
 
-    override fun write(input: List<Repo>) {
+    override fun write(input: List<RepoEntity>) {
         repoDao.insertAll(input)
     }
 
@@ -27,9 +27,9 @@ class LocalRepoDataSource @Inject constructor
 
 }
 typealias LocalDataSourceDeletable = Deletable<Unit>
-typealias LocalRepoDataSourceWritable = Writable<@JvmSuppressWildcards List<Repo>>
+typealias LocalRepoDataSourceWritable = Writable<@JvmSuppressWildcards List<RepoEntity>>
 
 interface LocalRepoDataSourceReadable :
-    Readable.Suspendable.IOLocal<LocalRepoDataSourceReadable.Params, @JvmSuppressWildcards PagingSource<Int, Repo>> {
+    Readable.Suspendable.IOLocal<LocalRepoDataSourceReadable.Params, @JvmSuppressWildcards PagingSource<Int, RepoEntity>> {
     data class Params(val queryString: String)
 }

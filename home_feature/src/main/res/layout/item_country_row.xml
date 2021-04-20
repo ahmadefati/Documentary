@@ -6,7 +6,7 @@
 
         <variable
             name="countryData"
-            type="com.documentary.data.entities.CountryEntity" />
+            type="com.documentary.home_feature.CountryView" />
 
     </data>
 

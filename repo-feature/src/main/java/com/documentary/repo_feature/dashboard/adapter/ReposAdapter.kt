@@ -29,7 +29,7 @@ class ReposAdapter : PagingDataAdapter<UiModel, RecyclerView.ViewHolder>(UIMODEL
         val uiModel = getItem(position)
         uiModel.let {
             when (uiModel) {
-                is UiModel.RepoItem -> (holder as RepoViewHolder).bind(uiModel.repo)
+                is UiModel.RepoItem -> (holder as RepoViewHolder).bind(uiModel.repoView)
                 is UiModel.SeparatorItem -> (holder as SeparatorViewHolder).bind(uiModel.description)
             }
         }
@@ -39,7 +39,7 @@ class ReposAdapter : PagingDataAdapter<UiModel, RecyclerView.ViewHolder>(UIMODEL
         private val UIMODEL_COMPARATOR = object : DiffUtil.ItemCallback<UiModel>() {
             override fun areItemsTheSame(oldItem: UiModel, newItem: UiModel): Boolean {
                 return (oldItem is UiModel.RepoItem && newItem is UiModel.RepoItem &&
-                        oldItem.repo.fullName == newItem.repo.fullName) ||
+                        oldItem.repoView.fullName == newItem.repoView.fullName) ||
                         (oldItem is UiModel.SeparatorItem && newItem is UiModel.SeparatorItem &&
                                 oldItem.description == newItem.description)
             }

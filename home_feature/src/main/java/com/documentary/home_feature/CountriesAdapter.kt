@@ -6,18 +6,17 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import com.documentary.common_databinding.databinding.DataBoundListAdapter
-import com.documentary.data.entities.CountryEntity
 import com.documentary.home_feature.databinding.ItemCountryRowBinding
 
 class CountriesAdapter(
-) : DataBoundListAdapter<CountryEntity, ItemCountryRowBinding>(diffCallback = object :
-    DiffUtil.ItemCallback<CountryEntity>() {
+) : DataBoundListAdapter<CountryView, ItemCountryRowBinding>(diffCallback = object :
+    DiffUtil.ItemCallback<CountryView>() {
 
-    override fun areItemsTheSame(oldItem: CountryEntity, newItem: CountryEntity): Boolean {
+    override fun areItemsTheSame(oldItem: CountryView, newItem: CountryView): Boolean {
         return false
     }
 
-    override fun areContentsTheSame(oldItem: CountryEntity, newItem: CountryEntity): Boolean {
+    override fun areContentsTheSame(oldItem: CountryView, newItem: CountryView): Boolean {
         return oldItem.hashCode() == newItem.hashCode()
     }
 }) {
@@ -32,7 +31,7 @@ class CountriesAdapter(
         )
     }
 
-    override fun bind(binding: ItemCountryRowBinding, item: CountryEntity, position: Int) {
+    override fun bind(binding: ItemCountryRowBinding, item: CountryView, position: Int) {
         binding.apply {
             countryData = item
             val that = this@CountriesAdapter

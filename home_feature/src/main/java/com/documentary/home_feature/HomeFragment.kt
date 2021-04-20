@@ -14,7 +14,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.documentary.base.data.model.AppStatus
-import com.documentary.data.entities.CountryEntity
 import com.documentary.view.autoCleared
 import com.documentary.view.safeNavigate
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,15 +65,15 @@ class HomeFragment : Fragment()/*(R.layout.fragment_home) */ {
         filterCountries()
     }
 
-    private fun subscribe(list: List<CountryEntity>?) {
+    private fun subscribe(list: List<CountryView>?) {
         homeViewModel.liveData.observe(viewLifecycleOwner, Observer {
-            if (it.countryEntity.isNotEmpty() && list == null) {
-                homeViewModel.countries = it.countryEntity.toList()
+            if (it.countryView.isNotEmpty() && list == null) {
+                homeViewModel.countries = it.countryView.toList()
                 countriesAdapter.submitList(homeViewModel.countries)
-                if (it.allInfoEntity != null) {
-                    allCasesText.text = it.allInfoEntity.cases.toString()
-                    deathsText.text = it.allInfoEntity.deaths.toString()
-                    recovered.text = it.allInfoEntity.recovered.toString()
+                if (it.allInfoView != null) {
+                    allCasesText.text = it.allInfoView.cases.toString()
+                    deathsText.text = it.allInfoView.deaths.toString()
+                    recovered.text = it.allInfoView.recovered.toString()
                 }
             } else if (list != null) {
                 countriesAdapter.submitList(list)
