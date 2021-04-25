@@ -1,6 +1,6 @@
 package com.documentary.domain.home
 
-import com.documentary.data.entities.AllInfoEntity
+import com.documentary.data.entities.home.AllInfoEntity
 
 fun AllInfoEntity.toAllInfo() = AllInfo(
     allId = allId,

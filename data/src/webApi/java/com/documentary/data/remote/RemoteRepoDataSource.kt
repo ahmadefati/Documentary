@@ -4,7 +4,7 @@ import com.documentary.base.data.entities.ErrorResult
 import com.documentary.base.data.entities.Result
 import com.documentary.base.extensions.toResult
 import com.documentary.data.dataSource.iDataSource.Readable
-import com.documentary.data.entities.RepoRequestModel
+import com.documentary.data.entities.repo.RepoRequestModel
 import com.documentary.data.responses.RepoSearchResponse
 import com.documentary.data.services.RepoService
 import javax.inject.Inject

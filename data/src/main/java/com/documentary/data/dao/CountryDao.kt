@@ -1,7 +1,7 @@
 package com.documentary.data.dao
 
 import androidx.room.*
-import com.documentary.data.entities.CountryEntity
+import com.documentary.data.entities.home.CountryEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

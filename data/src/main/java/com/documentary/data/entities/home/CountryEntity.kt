@@ -1,4 +1,4 @@
-package com.documentary.data.entities
+package com.documentary.data.entities.home
 
 import androidx.room.Entity
 import androidx.room.Ignore

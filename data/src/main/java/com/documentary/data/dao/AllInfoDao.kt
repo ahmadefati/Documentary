@@ -1,7 +1,7 @@
 package com.documentary.data.dao
 
 import androidx.room.*
-import com.documentary.data.entities.AllInfoEntity
+import com.documentary.data.entities.home.AllInfoEntity
 
 @Dao
 interface AllInfoDao {

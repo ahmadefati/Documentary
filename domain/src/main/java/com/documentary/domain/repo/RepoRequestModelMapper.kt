@@ -1,6 +1,6 @@
 package com.documentary.domain.repo
 
-import com.documentary.data.entities.RepoRequestModel
+import com.documentary.data.entities.repo.RepoRequestModel
 
 fun RepoRequestModel.toRepoRequest() = RepoRequest(
     url = url,

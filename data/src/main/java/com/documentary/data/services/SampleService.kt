@@ -1,7 +1,7 @@
 package com.documentary.data.services
 
-import com.documentary.data.entities.AllInfoEntity
-import com.documentary.data.entities.CountryEntity
+import com.documentary.data.entities.home.AllInfoEntity
+import com.documentary.data.entities.home.CountryEntity
 import retrofit2.Response
 import retrofit2.http.GET
 

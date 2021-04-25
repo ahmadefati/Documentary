@@ -1,7 +1,7 @@
 package com.documentary.data.repos
 
 import com.documentary.base.data.entities.Success
-import com.documentary.data.entities.AllInfoEntity
+import com.documentary.data.entities.home.AllInfoEntity
 import com.documentary.data.localDataSource.CountryInfoLocalDataSource
 import com.documentary.data.remote.AllInfoRemoteDataSource
 import javax.inject.Inject

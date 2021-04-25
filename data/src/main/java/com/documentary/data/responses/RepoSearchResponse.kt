@@ -1,6 +1,6 @@
 package com.documentary.data.responses
 
-import com.documentary.data.entities.RepoEntity
+import com.documentary.data.entities.repo.RepoEntity
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.JsonClass
 

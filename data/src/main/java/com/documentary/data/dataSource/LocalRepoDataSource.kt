@@ -5,7 +5,7 @@ import com.documentary.data.dao.repo.RepoDao
 import com.documentary.data.dataSource.iDataSource.Deletable
 import com.documentary.data.dataSource.iDataSource.Readable
 import com.documentary.data.dataSource.iDataSource.Writable
-import com.documentary.data.entities.RepoEntity
+import com.documentary.data.entities.repo.RepoEntity
 import javax.inject.Inject
 
 class LocalRepoDataSource @Inject constructor

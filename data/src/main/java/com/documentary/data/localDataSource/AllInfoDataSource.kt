@@ -1,7 +1,7 @@
 package com.documentary.data.localDataSource
 
 import com.documentary.data.dao.AllInfoDao
-import com.documentary.data.entities.AllInfoEntity
+import com.documentary.data.entities.home.AllInfoEntity
 import javax.inject.Inject
 
 class AllInfoDataSource @Inject constructor(

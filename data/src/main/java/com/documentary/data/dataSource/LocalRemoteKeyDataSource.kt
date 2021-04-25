@@ -3,7 +3,7 @@ package com.documentary.data.dataSource
 import com.documentary.data.dao.repo.RemoteKeysDao
 import com.documentary.data.dataSource.iDataSource.Readable
 import com.documentary.data.dataSource.iDataSource.Writable
-import com.documentary.data.entities.RemoteKeysModel
+import com.documentary.data.entities.repo.RemoteKeysModel
 import javax.inject.Inject
 
 class LocalRemoteKeyDataSource @Inject constructor

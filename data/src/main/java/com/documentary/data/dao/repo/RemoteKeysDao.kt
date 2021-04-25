@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.documentary.data.entities.RemoteKeysModel
+import com.documentary.data.entities.repo.RemoteKeysModel
 
 @Dao
 interface RemoteKeysDao {

@@ -8,9 +8,9 @@ import com.documentary.base.data.entities.ErrorResult
 import com.documentary.base.data.entities.Success
 import com.documentary.data.BuildConfig
 import com.documentary.data.dataSource.*
-import com.documentary.data.entities.RemoteKeysModel
-import com.documentary.data.entities.RepoEntity
-import com.documentary.data.entities.RepoRequestModel
+import com.documentary.data.entities.repo.RemoteKeysModel
+import com.documentary.data.entities.repo.RepoEntity
+import com.documentary.data.entities.repo.RepoRequestModel
 import com.documentary.data.services.IN_QUALIFIER
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,6 +1,6 @@
 package com.documentary.domain.repo
 
-import com.documentary.data.entities.RepoEntity
+import com.documentary.data.entities.repo.RepoEntity
 
 fun RepoEntity.toRepo() = Repo(
     id = id,

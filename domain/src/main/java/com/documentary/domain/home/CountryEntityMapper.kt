@@ -1,6 +1,6 @@
 package com.documentary.domain.home
 
-import com.documentary.data.entities.CountryEntity
+import com.documentary.data.entities.home.CountryEntity
 
 fun CountryEntity.toCountry() = Country(
     id = id,

@@ -1,7 +1,7 @@
 package com.documentary.data.repos
 
 import androidx.paging.PagingSource
-import com.documentary.data.entities.RepoEntity
+import com.documentary.data.entities.repo.RepoEntity
 import com.documentary.data.remote.GithubRemoteMediator
 
 interface IGithubRepository {

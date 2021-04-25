@@ -1,7 +1,7 @@
 package com.documentary.data.localDataSource
 
 import com.documentary.data.dao.CountryDao
-import com.documentary.data.entities.CountryEntity
+import com.documentary.data.entities.home.CountryEntity
 import javax.inject.Inject
 
 class CountryInfoLocalDataSource @Inject constructor(

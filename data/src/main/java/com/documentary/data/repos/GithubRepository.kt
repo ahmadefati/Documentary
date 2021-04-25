@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import com.documentary.base.utils.AppCoroutineDispatchers
 import com.documentary.data.dataSource.LocalRepoDataSource
 import com.documentary.data.dataSource.LocalRepoDataSourceReadable
-import com.documentary.data.entities.RepoEntity
+import com.documentary.data.entities.repo.RepoEntity
 import com.documentary.data.remote.GithubRemoteMediator
 import dagger.Reusable
 import javax.inject.Inject

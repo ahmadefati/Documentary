@@ -19,7 +19,7 @@ package com.documentary.data.repos.country
 
 import com.documentary.base.data.entities.Success
 import com.documentary.data.dao.CountryDao
-import com.documentary.data.entities.CountryEntity
+import com.documentary.data.entities.home.CountryEntity
 import com.dropbox.android.external.store4.Fetcher
 import com.dropbox.android.external.store4.SourceOfTruth
 import com.dropbox.android.external.store4.Store
