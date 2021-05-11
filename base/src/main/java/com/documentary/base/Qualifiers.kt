@@ -1,4 +1,4 @@
-package com.documentary.base.di
+package com.documentary.base
 
 import javax.inject.Qualifier
 

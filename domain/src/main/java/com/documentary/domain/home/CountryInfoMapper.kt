@@ -4,5 +4,8 @@ import com.documentary.data.entities.home.CountryInfoEntity
 
 fun CountryInfoEntity.toCountryInfo() =
     CountryInfo(
-        _id, flag, long, countryName
+        _id = _id,
+        flag = flag,
+        long = long,
+        countryName = countryName
     )
